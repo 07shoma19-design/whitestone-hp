@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whitestone</title>
+  <meta name="description" content="Whitestoneは、企業の成長を戦略的な営業活動で支える営業代行会社です。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    :root { --black: #111111; --white: #ffffff; --gray: #666666; --light-gray: #f7f7f7; --border: #e0e0e0; --serif: 'Playfair Display', Georgia, serif; --sans: 'Inter', system-ui, sans-serif; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 68px; }
+    .logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; letter-spacing: 0.01em; }
+    nav { display: flex; gap: 40px; align-items: center; }
+    nav a { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); transition: color 0.2s; }
+    nav a:hover { color: var(--black); }
+    .nav-cta { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white) !important; background: var(--black); padding: 10px 24px; transition: opacity 0.2s !important; }
+    .nav-cta:hover { opacity: 0.75; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 60px 100px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gray); margin-bottom: 36px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 6.5vw, 6rem); font-weight: 400; line-height: 1.08; max-width: 920px; margin-bottom: 44px; letter-spacing: -0.01em; }
+    .hero h1 em { font-style: italic; }
+    .hero-sub { font-size: 0.95rem; color: var(--gray); max-width: 480px; line-height: 2; margin-bottom: 52px; font-weight: 300; }
+    .hero-divider { position: absolute; right: 60px; bottom: 100px; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--border); writing-mode: vertical-rl; }
+    .btn-link { display: inline-flex; align-items: center; gap: 14px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--black); padding-bottom: 6px; transition: opacity 0.2s; width: fit-content; }
+    .btn-link:hover { opacity: 0.5; }
+    .btn-link::after { content: '→'; font-size: 0.9rem; }
+    section { padding: 110px 60px; border-bottom: 1px solid var(--border); }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gray); margin-bottom: 64px; }
+    h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; }
+    .philosophy-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .philosophy-text { font-size: 0.95rem; color: var(--gray); line-height: 2.1; font-weight: 300; margin-top: 32px; }
+    .philosophy-quote { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-style: italic; line-height: 1.6; color: var(--gray); padding-left: 32px; border-left: 1px solid var(--border); }
+    .service-intro { font-size: 0.95rem; color: var(--gray); max-width: 560px; line-height: 2; font-weight: 300; margin-bottom: 72px; }
+    .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .service-item { border-top: 1px solid var(--border); padding: 40px 48px 40px 0; }
+    .service-item:nth-child(even) { padding-right: 0; padding-left: 48px; border-left: 1px solid var(--border); }
+    .service-num { font-size: 0.7rem; color: var(--gray); letter-spacing: 0.12em; margin-bottom: 20px; font-weight: 300; }
+    .service-item h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; margin-bottom: 16px; letter-spacing: 0.01em; }
+    .service-item p { font-size: 0.88rem; color: var(--gray); line-height: 2; font-weight: 300; }
+    #company { background: var(--light-gray); }
+    .company-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 100px; align-items: start; margin-top: 60px; }
+    .company-lead { font-size: 0.92rem; color: var(--gray); line-height: 2.1; font-weight: 300; margin-top: 24px; }
+    .company-table { width: 100%; border-collapse: collapse; }
+    .company-table tr { border-bottom: 1px solid var(--border); }
+    .company-table tr:first-child { border-top: 1px solid var(--border); }
+    .company-table td { padding: 22px 0; font-size: 0.88rem; vertical-align: top; }
+    .company-table td:first-child { color: var(--gray); width: 150px; font-size: 0.75rem; letter-spacing: 0.08em; font-weight: 300; padding-right: 20px; }
+    .contact-layout { display: grid; grid-template-columns: 4fr 6fr; gap: 100px; align-items: start; margin-top: 60px; }
+    .contact-info h2 { margin-bottom: 28px; }
+    .contact-info p { font-size: 0.9rem; color: var(--gray); line-height: 2; font-weight: 300; }
+    .contact-email { display: inline-block; margin-top: 12px; font-size: 0.88rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: border-color 0.2s; }
+    .contact-email:hover { border-color: var(--black); }
+    .contact-form { display: flex; flex-direction: column; gap: 0; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .form-group:first-child { border-top: 1px solid var(--border); }
+    label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); }
+    input, textarea { border: none; padding: 8px 0; font-family: var(--sans); font-size: 0.92rem; background: transparent; outline: none; color: var(--black); font-weight: 300; }
+    textarea { resize: vertical; min-height: 100px; }
+    .submit-btn { margin-top: 32px; padding: 18px 48px; background: var(--black); color: var(--white); font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; transition: opacity 0.2s; width: fit-content; }
+    .submit-btn:hover { opacity: 0.7; }
+    footer { padding: 44px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: var(--gray); letter-spacing: 0.06em; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--black); }
+    @media (max-width: 900px) { header { padding: 0 24px; height: 60px; } nav { gap: 20px; } nav a { font-size: 0.68rem; } .nav-cta { padding: 8px 18px; } .hero, section { padding-left: 24px; padding-right: 24px; } .hero { padding-top: 100px; padding-bottom: 80px; } section { padding-top: 80px; padding-bottom: 80px; } .hero-divider { display: none; } .philosophy-layout, .service-grid, .company-layout, .contact-layout { grid-template-columns: 1fr; gap: 48px; } .service-item:nth-child(even) { padding-left: 0; border-left: none; } footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Whitestone</div>
+    <nav>
+      <a href="#service">Service</a>
+      <a href="#company">Company</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <p class="hero-eyebrow">Whitestone Inc. — Sales Agency</p>
+    <h1>Driving Growth Through<br><em>Strategic Sales.</em></h1>
+    <p class="hero-sub">企業の成長を、戦略的な営業活動で加速する。<br>Whitestoneは、確かな成果にコミットします。</p>
+    <a href="#service" class="btn-link">Our Services</a>
+    <div class="hero-divider">Whitestone Inc. 2026</div>
+  </section>
+  <section id="philosophy">
+    <p class="section-label">Our Philosophy</p>
+    <div class="philosophy-layout">
+      <div>
+        <h2>営業は、<br>事業の<em style="font-family: var(--serif); font-style: italic;">根幹</em>だ。</h2>
+        <p class="philosophy-text">どれほど優れたプロダクトやサービスも、届けられなければ意味を持たない。<br>Whitestoneは、クライアントの営業機能を戦略・実行の両面から支え、持続的な事業成長を実現します。</p>
+      </div>
+      <div>
+        <p class="philosophy-quote">"We don't just fill a sales role.<br>We become the engine<br>of your growth."</p>
+      </div>
+    </div>
+  </section>
+  <section id="service">
+    <p class="section-label">What We Do</p>
+    <h2>事業内容</h2>
+    <p class="service-intro">Whitestoneは営業プロセス全体をカバーする、総合的な営業代行・支援サービスを提供します。</p>
+    <div class="service-grid">
+      <div class="service-item"><p class="service-num">01</p><h3>営業代行</h3><p>新規開拓からクロージングまで、営業プロセス全体を代行します。テレアポ・商談・提案書作成・フォローアップを一貫して担い、貴社のリソースを本業に集中させます。</p></div>
+      <div class="service-item"><p class="service-num">02</p><h3>営業戦略コンサルティング</h3><p>市場分析・ターゲット設計・トークスクリプト・KPI策定まで、データに基づいた営業戦略を構築。現場で機能する仕組みを設計します。</p></div>
+      <div class="service-item"><p class="service-num">03</p><h3>インサイドセールス構築</h3><p>リード獲得から商談化までの一連のインサイドセールス体制を設計・運用。効率的な営業ファネルの構築を支援します。</p></div>
+      <div class="service-item"><p class="service-num">04</p><h3>営業組織支援</h3><p>採用・研修・評価制度など、クライアントの営業組織そのものを強化するための人材・体制支援を行います。</p></div>
+    </div>
+  </section>
+  <section id="company">
+    <p class="section-label">About Us</p>
+    <div class="company-layout">
+      <div>
+        <h2>会社概要</h2>
+        <p class="company-lead">Whitestoneは、企業の持続的成長を支えるために設立された営業代行・事業支援会社です。クライアントの事業フェーズに合わせた柔軟なアプローチで、確かな成果を届けます。</p>
+      </div>
+      <div>
+        <table class="company-table">
+          <tr><td>社名</td><td>株式会社Whitestone</td></tr>
+          <tr><td>代表取締役</td><td>原 和真<br>原 壮真</td></tr>
+          <tr><td>設立</td><td>2026年2月4日</td></tr>
+          <tr><td>事業内容</td><td>営業代行・営業戦略コンサルティング・インサイドセールス構築・営業組織支援</td></tr>
+          <tr><td>お問い合わせ</td><td><a href="mailto:shoma.whitestone@gmail.com" class="contact-email">shoma.whitestone@gmail.com</a></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <p class="section-label">Get in Touch</p>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>お問い合わせ</h2>
+        <p>サービスに関するご相談・お見積りは<br>お気軽にご連絡ください。<br>通常2営業日以内にご返信いたします。</p>
+        <a href="mailto:shoma.whitestone@gmail.com" class="contact-email">shoma.whitestone@gmail.com</a>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group"><label for="name">お名前 *</label><input type="text" id="name" name="name" placeholder="山田 太郎" required /></div>
+        <div class="form-group"><label for="company">会社名</label><input type="text" id="company" name="company" placeholder="株式会社〇〇" /></div>
+        <div class="form-group"><label for="email">メールアドレス *</label><input type="email" id="email" name="email" placeholder="example@company.com" required /></div>
+        <div class="form-group"><label for="message">お問い合わせ内容 *</label><textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea></div>
+        <button type="submit" class="submit-btn">Send Message →</button>
+      </form>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-logo">Whitestone</div>
+    <p>© 2026 Whitestone Inc. All Rights Reserved.</p>
+  </footer>
+</body>
+    </html>
