@@ -4,518 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Whitestone株式会社</title>
-  <meta name="description" content="Whitestoneは、営業と人材のプロフェッショナルとして企業の持続的な成長を支える事業会社です。" />
+  <meta name="description" content="Whitestoneは、人材・営業・資産設計の3つの領域で、企業と個人の持続的な成長を支える事業会社です。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ================================================================
-       Design Tokens（デザインmd準拠）
-       ================================================================ */
-    :root {
-      /* color */
-      --color-text-primary: #ffffff;
-      --color-text-secondary: rgba(255, 255, 255, 0.66);
-      --color-text-tertiary: rgba(255, 255, 255, 0.45);
-      --color-surface-base: #000000;
-      --color-surface-strong: #151b17;
-      --color-surface-raised: #b96634;   /* copper accent */
-      --color-border-strong: #c39d78;    /* tan */
-      --color-border-hairline: rgba(195, 157, 120, 0.28);
-      --color-accent: #c39d78;
-      --color-on-raised: #0a0a0a;        /* text on copper — AA対応 */
-
-      /* font */
-      --font-sans: "YuGothic", "Yu Gothic", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN",
-                   "游ゴシック", "游ゴシック体", "メイリオ", Meiryo, sans-serif;
-      --font-serif: "Playfair Display", "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
-      --font-serif-jp: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
-      --font-size-xs: 12px;
-      --font-size-sm: 14px;
-      --font-size-md: 16px;
-      --font-size-lg: 18px;
-      --font-size-xl: 20px;
-      --font-size-2xl: 22.4px;
-      --font-size-3xl: 24px;
-      --font-size-4xl: 40px;
-      --font-size-display: clamp(40px, 6.4vw, 88px);
-      --font-size-heading: clamp(28px, 3.6vw, 52px);
-      --font-weight-base: 300;
-      --line-height-base: 1.5;
-
-      /* space */
-      --space-1: 2px;
-      --space-2: 2.8px;
-      --space-3: 4px;
-      --space-4: 8px;
-      --space-5: 16px;
-      --space-6: 24px;
-      --space-7: 32px;
-      --space-8: 36px;
-      --space-9: 64px;
-      --space-10: 104px;
-      --space-11: 150px;
-      --gutter: clamp(24px, 5vw, 72px);
-
-      /* motion */
-      --motion-instant: 3ms;
-      --motion-fast: 300ms;
-      --motion-normal: 900ms;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      font-size: var(--font-size-md);
-      font-weight: var(--font-weight-base);
-      line-height: var(--line-height-base);
-      background: var(--color-surface-base);
-      color: var(--color-text-primary);
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .nowrap { white-space: nowrap; }
-
-    /* ── Focus visible（全インタラクティブ要素共通） ── */
-    :focus { outline: none; }
-    :focus-visible {
-      outline: 2px solid var(--color-border-strong);
-      outline-offset: 3px;
-      border-radius: 1px;
-    }
-
-    /* ── Skip link ── */
-    .skip-link {
-      position: absolute; left: var(--space-5); top: -60px; z-index: 300;
-      background: var(--color-surface-raised); color: var(--color-on-raised);
-      padding: var(--space-4) var(--space-6);
-      font-size: var(--font-size-sm); font-weight: 500;
-      transition: top var(--motion-fast) var(--ease);
-    }
-    .skip-link:focus { top: var(--space-5); }
-
-    /* ================================================================
-       Header
-       ================================================================ */
-    .site-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 var(--gutter);
-      height: 92px;
-      background: transparent;
-      transition: background var(--motion-fast) var(--ease),
-                  height var(--motion-fast) var(--ease),
-                  border-color var(--motion-fast) var(--ease);
-      border-bottom: 1px solid transparent;
-    }
-    .site-header.is-scrolled {
-      background: rgba(0, 0, 0, 0.95);
-      height: 68px;
-      border-bottom-color: var(--color-border-hairline);
-    }
-    .wordmark {
-      font-family: var(--font-serif);
-      font-size: var(--font-size-xl);
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--color-text-primary);
-      border: 1px solid var(--color-text-primary);
-      padding: 10px 22px;
-      transition: color var(--motion-fast), border-color var(--motion-fast);
-      white-space: nowrap;
-    }
-    .wordmark:hover { color: var(--color-accent); border-color: var(--color-accent); }
-
-    .site-nav { display: flex; align-items: center; gap: var(--space-8); }
-    .site-nav a:not(.nav-cta) {
-      font-size: var(--font-size-sm);
-      letter-spacing: 0.08em;
-      color: var(--color-text-primary);
-      padding: var(--space-4) 0;
-      position: relative;
-    }
-    .site-nav a:not(.nav-cta)::after {
-      content: ""; position: absolute; left: 0; right: 100%; bottom: 0;
-      height: 1px; background: var(--color-accent);
-      transition: right var(--motion-fast) var(--ease);
-    }
-    .site-nav a:not(.nav-cta):hover::after,
-    .site-nav a:not(.nav-cta):focus-visible::after { right: 0; }
-
-    .nav-cta {
-      font-size: var(--font-size-sm);
-      letter-spacing: 0.1em;
-      color: var(--color-text-primary);
-      border: 1px solid var(--color-border-strong);
-      padding: 12px 28px;
-      transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
-    }
-    .nav-cta:hover, .nav-cta:focus-visible {
-      background: var(--color-surface-raised);
-      border-color: var(--color-surface-raised);
-      color: var(--color-on-raised);
-    }
-    .nav-cta:active { opacity: 0.85; }
-
-    /* ── Mobile menu ── */
-    .menu-toggle {
-      display: none;
-      background: none; border: 1px solid var(--color-border-strong);
-      color: var(--color-text-primary);
-      font-family: var(--font-sans);
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.18em;
-      padding: 10px 16px;
-      cursor: pointer;
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed; inset: 0; z-index: 250;
-      background: #000000;
-      padding: var(--space-10) var(--gutter);
-      flex-direction: column; gap: var(--space-7);
-    }
-    .mobile-menu.is-open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--font-serif-jp);
-      font-size: var(--font-size-3xl);
-      color: var(--color-text-primary);
-      border-bottom: 1px solid var(--color-border-hairline);
-      padding-bottom: var(--space-5);
-    }
-    .mobile-menu .menu-close {
-      align-self: flex-end;
-      background: none; border: 1px solid var(--color-border-strong);
-      color: var(--color-text-primary);
-      font-size: var(--font-size-xs); letter-spacing: 0.18em;
-      padding: 10px 16px; cursor: pointer;
-    }
-
-    /* ================================================================
-       Hero
-       ================================================================ */
-    .hero {
-      min-height: 100svh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: var(--space-11) var(--gutter) var(--space-10);
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(120% 90% at 85% 10%, rgba(21, 27, 23, 0.95) 0%, rgba(0, 0, 0, 0) 55%),
-        radial-gradient(80% 60% at 10% 100%, rgba(185, 102, 52, 0.14) 0%, rgba(0, 0, 0, 0) 60%),
-        var(--color-surface-base);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
-      gap: var(--space-9);
-      align-items: end;
-    }
-    .hero h1 {
-      font-family: var(--font-serif-jp);
-      font-size: var(--font-size-display);
-      font-weight: 500;
-      line-height: 1.22;
-      letter-spacing: 0.02em;
-    }
-    .hero h1 .en {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      letter-spacing: 0.01em;
-    }
-    .hero-sub {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-secondary);
-      line-height: 2.1;
-      max-width: 22em;
-    }
-    .hero-sub sup { color: var(--color-accent); font-size: 0.7em; }
-    .hero-actions { margin-top: var(--space-8); display: flex; gap: var(--space-6); flex-wrap: wrap; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-size: var(--font-size-sm);
-      letter-spacing: 0.1em;
-      padding: 16px 36px;
-      border: 1px solid var(--color-border-strong);
-      color: var(--color-text-primary);
-      background: transparent;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
-    }
-    .btn::after { content: "→"; transition: transform var(--motion-fast) var(--ease); }
-    .btn:hover, .btn:focus-visible {
-      background: var(--color-surface-raised);
-      border-color: var(--color-surface-raised);
-      color: var(--color-on-raised);
-    }
-    .btn:hover::after, .btn:focus-visible::after { transform: translateX(4px); }
-    .btn:active { opacity: 0.85; }
-    .btn--solid {
-      background: var(--color-surface-raised);
-      border-color: var(--color-surface-raised);
-      color: var(--color-on-raised);
-      font-weight: 500;
-    }
-    .btn--solid:hover, .btn--solid:focus-visible {
-      background: transparent;
-      color: var(--color-text-primary);
-      border-color: var(--color-border-strong);
-    }
-
-    .hero-scroll {
-      position: absolute; right: var(--gutter); bottom: var(--space-10);
-      writing-mode: vertical-rl;
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.3em;
-      color: var(--color-text-tertiary);
-      text-transform: uppercase;
-    }
-
-    /* ================================================================
-       Sections（共通）
-       ================================================================ */
-    .section { padding: var(--space-11) var(--gutter); border-top: 1px solid var(--color-border-hairline); }
-    .section--strong { background: var(--color-surface-strong); }
-    .section-label {
-      display: flex; align-items: center; gap: var(--space-5);
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: var(--space-9);
-    }
-    .section-label::before {
-      content: ""; width: 40px; height: 1px; background: var(--color-border-strong);
-    }
-    .section h2 {
-      font-family: var(--font-serif-jp);
-      font-size: var(--font-size-heading);
-      font-weight: 500;
-      line-height: 1.35;
-      letter-spacing: 0.02em;
-    }
-
-    /* ── Philosophy ── */
-    .philosophy-grid {
-      display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
-      gap: var(--space-10); align-items: start;
-    }
-    .philosophy-text {
-      margin-top: var(--space-7);
-      font-size: var(--font-size-sm);
-      color: var(--color-text-secondary);
-      line-height: 2.2;
-      max-width: 34em;
-    }
-    .philosophy-quote {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: var(--font-size-2xl);
-      line-height: 1.7;
-      color: var(--color-accent);
-      border-left: 1px solid var(--color-border-strong);
-      padding-left: var(--space-7);
-      margin-top: var(--space-4);
-    }
-
-    /* ── Facts strip ── */
-    .facts {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--color-border-hairline);
-      margin-top: var(--space-10);
-    }
-    .fact { padding: var(--space-8) var(--space-6) 0 0; }
-    .fact + .fact { border-left: 1px solid var(--color-border-hairline); padding-left: var(--space-8); }
-    .fact-value {
-      font-family: var(--font-serif);
-      font-size: var(--font-size-4xl);
-      line-height: 1.2;
-      color: var(--color-text-primary);
-    }
-    .fact-value .unit { font-size: var(--font-size-lg); color: var(--color-text-secondary); margin-left: 4px; }
-    .fact-label { margin-top: var(--space-4); font-size: var(--font-size-xs); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
-
-    /* ── Business segments ── */
-    .segment-intro {
-      font-size: var(--font-size-sm); color: var(--color-text-secondary);
-      line-height: 2.1; max-width: 36em; margin-top: var(--space-7);
-    }
-    .segments { margin-top: var(--space-9); border-top: 1px solid var(--color-border-hairline); }
-    .segment {
-      display: grid;
-      grid-template-columns: 88px minmax(0, 4fr) minmax(0, 6fr);
-      gap: var(--space-8);
-      padding: var(--space-9) 0;
-      border-bottom: 1px solid var(--color-border-hairline);
-      transition: background var(--motion-fast);
-    }
-    .segment:hover { background: rgba(255, 255, 255, 0.02); }
-    .segment-num {
-      font-family: var(--font-serif);
-      font-size: var(--font-size-lg);
-      color: var(--color-accent);
-      padding-top: 6px;
-    }
-    .segment h3 {
-      font-family: var(--font-serif-jp);
-      font-size: var(--font-size-3xl);
-      font-weight: 500;
-      line-height: 1.5;
-    }
-    .segment-status {
-      display: inline-block;
-      margin-top: var(--space-4);
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.16em;
-      color: var(--color-accent);
-      border: 1px solid var(--color-border-hairline);
-      padding: 5px 14px;
-    }
-    .segment-body p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; }
-    .segment-list { list-style: none; margin-top: var(--space-6); }
-    .segment-list li {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-secondary);
-      padding: var(--space-4) 0 var(--space-4) var(--space-6);
-      border-top: 1px solid var(--color-border-hairline);
-      position: relative;
-    }
-    .segment-list li::before {
-      content: ""; position: absolute; left: 4px; top: 50%;
-      width: 8px; height: 1px; background: var(--color-border-strong);
-    }
-    .segment-note {
-      margin-top: var(--space-6);
-      font-size: var(--font-size-xs);
-      color: var(--color-text-tertiary);
-      line-height: 1.9;
-    }
-
-    /* ── Company ── */
-    .company-grid {
-      display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
-      gap: var(--space-10); align-items: start; margin-top: var(--space-4);
-    }
-    .company-lead {
-      margin-top: var(--space-7);
-      font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.2;
-    }
-    .company-table { width: 100%; border-collapse: collapse; }
-    .company-table th, .company-table td {
-      text-align: left; vertical-align: top;
-      padding: var(--space-6) 0;
-      border-bottom: 1px solid var(--color-border-hairline);
-      font-size: var(--font-size-sm);
-      font-weight: var(--font-weight-base);
-    }
-    .company-table tr:first-child th, .company-table tr:first-child td { border-top: 1px solid var(--color-border-hairline); }
-    .company-table th {
-      width: 9em;
-      color: var(--color-text-tertiary);
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.12em;
-      padding-right: var(--space-6);
-      white-space: nowrap;
-    }
-    .company-table td { color: var(--color-text-primary); line-height: 2; }
-
-    .text-link {
-      color: var(--color-text-primary);
-      border-bottom: 1px solid var(--color-border-strong);
-      padding-bottom: 2px;
-      transition: color var(--motion-fast), border-color var(--motion-fast);
-    }
-    .text-link:hover, .text-link:focus-visible { color: var(--color-accent); }
-
-    /* ── Contact ── */
-    .contact-grid {
-      display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
-      gap: var(--space-10); align-items: start; margin-top: var(--space-4);
-    }
-    .contact-lead { margin-top: var(--space-7); font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.2; }
-    .contact-email { display: inline-block; margin-top: var(--space-6); }
-
-    .contact-form { display: flex; flex-direction: column; }
-    .form-group {
-      display: flex; flex-direction: column; gap: var(--space-4);
-      padding: var(--space-6) 0;
-      border-bottom: 1px solid var(--color-border-hairline);
-    }
-    .form-group:first-child { border-top: 1px solid var(--color-border-hairline); }
-    .form-group label {
-      font-size: var(--font-size-xs);
-      letter-spacing: 0.18em;
-      color: var(--color-accent);
-      text-transform: uppercase;
-    }
-    .form-group .jp-label { color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: none; margin-left: var(--space-4); }
-    input, textarea {
-      background: transparent;
-      border: none;
-      color: var(--color-text-primary);
-      font-family: var(--font-sans);
-      font-size: var(--font-size-md);
-      font-weight: var(--font-weight-base);
-      padding: var(--space-4) 0;
-      caret-color: var(--color-accent);
-    }
-    input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
-    input:focus-visible, textarea:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--color-border-strong); }
-    textarea { resize: vertical; min-height: 120px; }
-    .submit-btn { margin-top: var(--space-8); align-self: flex-start; }
-
-    /* ── Footer ── */
-    .site-footer {
-      border-top: 1px solid var(--color-border-hairline);
-      padding: var(--space-9) var(--gutter);
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
-      flex-wrap: wrap;
-    }
-    .footer-wordmark {
-      font-family: var(--font-serif);
-      font-size: var(--font-size-md);
-      border: 1px solid var(--color-text-primary);
-      padding: 8px 18px;
-    }
-    .footer-copy { font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; }
-    .to-top {
-      font-size: var(--font-size-xs); letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--color-text-secondary);
-    }
-    .to-top:hover, .to-top:focus-visible { color: var(--color-accent); }
-
-    /* ── Reveal animation ── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--motion-normal) var(--ease), transform var(--motion-normal) var(--ease); }
-    .reveal.is-visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      *, *::before, *::after { transition-duration: var(--motion-instant) !important; animation: none !important; }
-    }
-
-    /* ================================================================
-       Responsive
-       ================================================================ */
-    @media (max-width: 960px) {
-      .site-nav { display: none; }
-      .menu-toggle { display: block; }
-      .hero-grid { grid-template-columns: 1fr; gap: var(--space-7); }
-      .hero-scroll { display: none; }
-      .philosophy-grid, .company-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-      .facts { grid-template-columns: 1fr; }
-      .fact + .fact { border-left: none; border-top: 1px solid var(--color-border-hairline); padding-left: 0; margin-top: var(--space-6); padding-top: var(--space-6); }
-      .segment { grid-template-columns: 1fr; gap: var(--space-5); padding: var(--space-8) 0; }
-      .segment-num { padding-top: 0; }
-      .section { padding-top: var(--space-10); padding-bottom: var(--space-10); }
-      .company-table th { width: 7em; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -523,10 +16,11 @@
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
-    <a class="wordmark" href="#top" aria-label="Whitestone ホーム">Whitestone</a>
+    <a class="wordmark" href="index.html" aria-label="Whitestone ホーム">Whitestone</a>
     <nav class="site-nav" aria-label="メインナビゲーション">
-      <a href="#philosophy">私たちの流儀</a>
-      <a href="#business">ビジネス</a>
+      <a href="jinzai.html">人材紹介</a>
+      <a href="eigyo.html">営業代行</a>
+      <a href="hoken.html">保険・資産設計</a>
       <a href="#company">会社情報</a>
       <a href="#contact" class="nav-cta">お問い合わせ</a>
     </nav>
@@ -536,8 +30,9 @@
   <!-- Mobile menu -->
   <nav class="mobile-menu" id="mobileMenu" aria-label="モバイルナビゲーション">
     <button class="menu-close" id="menuClose">CLOSE</button>
-    <a href="#philosophy">私たちの流儀</a>
-    <a href="#business">ビジネス</a>
+    <a href="jinzai.html">人材紹介</a>
+    <a href="eigyo.html">営業代行</a>
+    <a href="hoken.html">保険・資産設計</a>
     <a href="#company">会社情報</a>
     <a href="#contact">お問い合わせ</a>
   </nav>
@@ -609,7 +104,7 @@
         <article class="segment reveal">
           <p class="segment-num" aria-hidden="true">01</p>
           <div>
-            <h3>人材紹介</h3>
+            <h3><a href="jinzai.html" class="text-link">人材紹介</a></h3>
             <p class="segment-status">2026年 始動準備中</p>
           </div>
           <div class="segment-body">
@@ -618,14 +113,10 @@
               地域の交通を支える事業者と働き手を、対面の営業力でつなぎ、
               入社後の定着まで伴走することを目指します。
             </p>
-            <ul class="segment-list">
-              <li>タクシー・モビリティ業界特化のマッチング</li>
-              <li>地域事業者との直接連携</li>
-              <li>入社後の定着支援</li>
-            </ul>
             <p class="segment-note">
               ※有料職業紹介事業の許可取得に向けて準備中です。職業紹介サービスの提供は許可取得後に開始します。
             </p>
+            <a href="jinzai.html" class="more-link">詳しく見る</a>
           </div>
         </article>
 
@@ -633,7 +124,7 @@
         <article class="segment reveal">
           <p class="segment-num" aria-hidden="true">02</p>
           <div>
-            <h3>営業代行・<br />営業支援</h3>
+            <h3><a href="eigyo.html" class="text-link">営業代行・<br />営業支援</a></h3>
             <p class="segment-status">稼働中</p>
           </div>
           <div class="segment-body">
@@ -643,10 +134,9 @@
             </p>
             <ul class="segment-list">
               <li>営業代行（テレアポ・商談・提案・フォローアップ）</li>
-              <li>営業戦略コンサルティング（市場分析・KPI設計・トークスクリプト）</li>
-              <li>インサイドセールス構築</li>
-              <li>営業組織支援（採用・研修・評価制度）</li>
+              <li>営業戦略コンサルティング・インサイドセールス構築・営業組織支援</li>
             </ul>
+            <a href="eigyo.html" class="more-link">詳しく見る</a>
           </div>
         </article>
 
@@ -654,17 +144,14 @@
         <article class="segment reveal">
           <p class="segment-num" aria-hidden="true">03</p>
           <div>
-            <h3>保険・資産設計</h3>
+            <h3><a href="hoken.html" class="text-link">保険・資産設計</a></h3>
           </div>
           <div class="segment-body">
             <p>
               業界歴10年のファイナンシャルプランナーが、個人・法人のライフプランに合わせた
               保険設計・資産形成をご提案。将来への備えを、確かな実績でサポートします。
             </p>
-            <ul class="segment-list">
-              <li>保険設計・保障の見直し</li>
-              <li>ライフプラン設計・資産形成のご提案</li>
-            </ul>
+            <a href="hoken.html" class="more-link">詳しく見る</a>
           </div>
         </article>
       </div>
@@ -748,35 +235,6 @@
     <a class="to-top" href="#top">Top ↑</a>
   </footer>
 
-  <script>
-    // ヘッダー：スクロールで背景を付与
-    const header = document.getElementById('siteHeader');
-    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // モバイルメニュー
-    const toggle = document.getElementById('menuToggle');
-    const menu = document.getElementById('mobileMenu');
-    const closeBtn = document.getElementById('menuClose');
-    const setMenu = (open) => {
-      menu.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      if (open) closeBtn.focus(); else toggle.focus();
-    };
-    toggle.addEventListener('click', () => setMenu(true));
-    closeBtn.addEventListener('click', () => setMenu(false));
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false);
-    });
-
-    // スクロールリビール（reduced-motion時はCSSで無効化済み）
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
