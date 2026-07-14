@@ -3,502 +3,786 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Whitestone</title>
-  <meta name="description" content="Whitestoneは、企業の成長を戦略的な営業活動で支える営業代行会社です。" />
+  <title>Whitestone株式会社</title>
+  <meta name="description" content="Whitestoneは、営業と人材のプロフェッショナルとして企業の持続的な成長を支える事業会社です。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* ================================================================
+       Design Tokens（デザインmd準拠）
+       ================================================================ */
+    :root {
+      /* color */
+      --color-text-primary: #ffffff;
+      --color-text-secondary: rgba(255, 255, 255, 0.66);
+      --color-text-tertiary: rgba(255, 255, 255, 0.45);
+      --color-surface-base: #000000;
+      --color-surface-strong: #151b17;
+      --color-surface-raised: #b96634;   /* copper accent */
+      --color-border-strong: #c39d78;    /* tan */
+      --color-border-hairline: rgba(195, 157, 120, 0.28);
+      --color-accent: #c39d78;
+      --color-on-raised: #0a0a0a;        /* text on copper — AA対応 */
+
+      /* font */
+      --font-sans: "YuGothic", "Yu Gothic", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN",
+                   "游ゴシック", "游ゴシック体", "メイリオ", Meiryo, sans-serif;
+      --font-serif: "Playfair Display", "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      --font-serif-jp: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+      --font-size-xs: 12px;
+      --font-size-sm: 14px;
+      --font-size-md: 16px;
+      --font-size-lg: 18px;
+      --font-size-xl: 20px;
+      --font-size-2xl: 22.4px;
+      --font-size-3xl: 24px;
+      --font-size-4xl: 40px;
+      --font-size-display: clamp(40px, 6.4vw, 88px);
+      --font-size-heading: clamp(28px, 3.6vw, 52px);
+      --font-weight-base: 300;
+      --line-height-base: 1.5;
+
+      /* space */
+      --space-1: 2px;
+      --space-2: 2.8px;
+      --space-3: 4px;
+      --space-4: 8px;
+      --space-5: 16px;
+      --space-6: 24px;
+      --space-7: 32px;
+      --space-8: 36px;
+      --space-9: 64px;
+      --space-10: 104px;
+      --space-11: 150px;
+      --gutter: clamp(24px, 5vw, 72px);
+
+      /* motion */
+      --motion-instant: 3ms;
+      --motion-fast: 300ms;
+      --motion-normal: 900ms;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'Inter', sans-serif; background: #fff; color: #111; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; color: inherit; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-base);
+      line-height: var(--line-height-base);
+      background: var(--color-surface-base);
+      color: var(--color-text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .nowrap { white-space: nowrap; }
 
-    /* ── Variables ── */
-    :root {
-      --black: #111111;
-      --white: #ffffff;
-      --gray: #666666;
-      --light-gray: #f7f7f7;
-      --border: #e0e0e0;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'Inter', system-ui, sans-serif;
+    /* ── Focus visible（全インタラクティブ要素共通） ── */
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 2px solid var(--color-border-strong);
+      outline-offset: 3px;
+      border-radius: 1px;
     }
 
-    /* ── Header ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute; left: var(--space-5); top: -60px; z-index: 300;
+      background: var(--color-surface-raised); color: var(--color-on-raised);
+      padding: var(--space-4) var(--space-6);
+      font-size: var(--font-size-sm); font-weight: 500;
+      transition: top var(--motion-fast) var(--ease);
+    }
+    .skip-link:focus { top: var(--space-5); }
+
+    /* ================================================================
+       Header
+       ================================================================ */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 60px;
-      height: 68px;
+      padding: 0 var(--gutter);
+      height: 92px;
+      background: transparent;
+      transition: background var(--motion-fast) var(--ease),
+                  height var(--motion-fast) var(--ease),
+                  border-color var(--motion-fast) var(--ease);
+      border-bottom: 1px solid transparent;
     }
-    .logo {
-      font-family: var(--serif);
-      font-size: 1.45rem;
+    .site-header.is-scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      height: 68px;
+      border-bottom-color: var(--color-border-hairline);
+    }
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-xl);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-text-primary);
+      padding: 10px 22px;
+      transition: color var(--motion-fast), border-color var(--motion-fast);
+      white-space: nowrap;
+    }
+    .wordmark:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+    .site-nav { display: flex; align-items: center; gap: var(--space-8); }
+    .site-nav a:not(.nav-cta) {
+      font-size: var(--font-size-sm);
+      letter-spacing: 0.08em;
+      color: var(--color-text-primary);
+      padding: var(--space-4) 0;
+      position: relative;
+    }
+    .site-nav a:not(.nav-cta)::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: 0;
+      height: 1px; background: var(--color-accent);
+      transition: right var(--motion-fast) var(--ease);
+    }
+    .site-nav a:not(.nav-cta):hover::after,
+    .site-nav a:not(.nav-cta):focus-visible::after { right: 0; }
+
+    .nav-cta {
+      font-size: var(--font-size-sm);
+      letter-spacing: 0.1em;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-strong);
+      padding: 12px 28px;
+      transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
+    }
+    .nav-cta:hover, .nav-cta:focus-visible {
+      background: var(--color-surface-raised);
+      border-color: var(--color-surface-raised);
+      color: var(--color-on-raised);
+    }
+    .nav-cta:active { opacity: 0.85; }
+
+    /* ── Mobile menu ── */
+    .menu-toggle {
+      display: none;
+      background: none; border: 1px solid var(--color-border-strong);
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.18em;
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 250;
+      background: #000000;
+      padding: var(--space-10) var(--gutter);
+      flex-direction: column; gap: var(--space-7);
+    }
+    .mobile-menu.is-open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-serif-jp);
+      font-size: var(--font-size-3xl);
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-hairline);
+      padding-bottom: var(--space-5);
+    }
+    .mobile-menu .menu-close {
+      align-self: flex-end;
+      background: none; border: 1px solid var(--color-border-strong);
+      color: var(--color-text-primary);
+      font-size: var(--font-size-xs); letter-spacing: 0.18em;
+      padding: 10px 16px; cursor: pointer;
+    }
+
+    /* ================================================================
+       Hero
+       ================================================================ */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: var(--space-11) var(--gutter) var(--space-10);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(120% 90% at 85% 10%, rgba(21, 27, 23, 0.95) 0%, rgba(0, 0, 0, 0) 55%),
+        radial-gradient(80% 60% at 10% 100%, rgba(185, 102, 52, 0.14) 0%, rgba(0, 0, 0, 0) 60%),
+        var(--color-surface-base);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+      gap: var(--space-9);
+      align-items: end;
+    }
+    .hero h1 {
+      font-family: var(--font-serif-jp);
+      font-size: var(--font-size-display);
+      font-weight: 500;
+      line-height: 1.22;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 .en {
+      font-family: var(--font-serif);
       font-weight: 400;
       letter-spacing: 0.01em;
     }
-    nav { display: flex; gap: 40px; align-items: center; }
-    nav a {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gray);
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--black); }
-    .nav-cta {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white) !important;
-      background: var(--black);
-      padding: 10px 24px;
-      transition: opacity 0.2s !important;
-    }
-    .nav-cta:hover { opacity: 0.75; }
-
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 140px 60px 100px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 36px;
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 6.5vw, 6rem);
-      font-weight: 400;
-      line-height: 1.08;
-      max-width: 920px;
-      margin-bottom: 44px;
-      letter-spacing: -0.01em;
-    }
-    .hero h1 em { font-style: italic; }
     .hero-sub {
-      font-size: 0.95rem;
-      color: var(--gray);
-      max-width: 480px;
-      line-height: 2;
-      margin-bottom: 52px;
-      font-weight: 300;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      line-height: 2.1;
+      max-width: 22em;
     }
-    .hero-divider {
-      position: absolute;
-      right: 60px;
-      bottom: 100px;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--border);
-      writing-mode: vertical-rl;
-    }
-    .btn-link {
-      display: inline-flex; align-items: center; gap: 14px;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--black);
-      padding-bottom: 6px;
-      transition: opacity 0.2s;
-      width: fit-content;
-    }
-    .btn-link:hover { opacity: 0.5; }
-    .btn-link::after { content: '→'; font-size: 0.9rem; }
+    .hero-sub sup { color: var(--color-accent); font-size: 0.7em; }
+    .hero-actions { margin-top: var(--space-8); display: flex; gap: var(--space-6); flex-wrap: wrap; }
 
-    /* ── Section共通 ── */
-    section { padding: 110px 60px; border-bottom: 1px solid var(--border); }
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 64px;
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: var(--font-size-sm);
+      letter-spacing: 0.1em;
+      padding: 16px 36px;
+      border: 1px solid var(--color-border-strong);
+      color: var(--color-text-primary);
+      background: transparent;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
     }
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 4vw, 3.8rem);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
+    .btn::after { content: "→"; transition: transform var(--motion-fast) var(--ease); }
+    .btn:hover, .btn:focus-visible {
+      background: var(--color-surface-raised);
+      border-color: var(--color-surface-raised);
+      color: var(--color-on-raised);
+    }
+    .btn:hover::after, .btn:focus-visible::after { transform: translateX(4px); }
+    .btn:active { opacity: 0.85; }
+    .btn--solid {
+      background: var(--color-surface-raised);
+      border-color: var(--color-surface-raised);
+      color: var(--color-on-raised);
+      font-weight: 500;
+    }
+    .btn--solid:hover, .btn--solid:focus-visible {
+      background: transparent;
+      color: var(--color-text-primary);
+      border-color: var(--color-border-strong);
+    }
+
+    .hero-scroll {
+      position: absolute; right: var(--gutter); bottom: var(--space-10);
+      writing-mode: vertical-rl;
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.3em;
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+    }
+
+    /* ================================================================
+       Sections（共通）
+       ================================================================ */
+    .section { padding: var(--space-11) var(--gutter); border-top: 1px solid var(--color-border-hairline); }
+    .section--strong { background: var(--color-surface-strong); }
+    .section-label {
+      display: flex; align-items: center; gap: var(--space-5);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-9);
+    }
+    .section-label::before {
+      content: ""; width: 40px; height: 1px; background: var(--color-border-strong);
+    }
+    .section h2 {
+      font-family: var(--font-serif-jp);
+      font-size: var(--font-size-heading);
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
     }
 
     /* ── Philosophy ── */
-    .philosophy-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: end;
+    .philosophy-grid {
+      display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
+      gap: var(--space-10); align-items: start;
     }
     .philosophy-text {
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 2.1;
-      font-weight: 300;
-      margin-top: 32px;
+      margin-top: var(--space-7);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      line-height: 2.2;
+      max-width: 34em;
     }
     .philosophy-quote {
-      font-family: var(--serif);
-      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-family: var(--font-serif);
       font-style: italic;
-      line-height: 1.6;
-      color: var(--gray);
-      padding-left: 32px;
-      border-left: 1px solid var(--border);
+      font-size: var(--font-size-2xl);
+      line-height: 1.7;
+      color: var(--color-accent);
+      border-left: 1px solid var(--color-border-strong);
+      padding-left: var(--space-7);
+      margin-top: var(--space-4);
     }
 
-    /* ── Service ── */
-    .service-intro {
-      font-size: 0.95rem;
-      color: var(--gray);
-      max-width: 560px;
-      line-height: 2;
-      font-weight: 300;
-      margin-bottom: 72px;
+    /* ── Facts strip ── */
+    .facts {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--color-border-hairline);
+      margin-top: var(--space-10);
     }
-    .service-grid {
+    .fact { padding: var(--space-8) var(--space-6) 0 0; }
+    .fact + .fact { border-left: 1px solid var(--color-border-hairline); padding-left: var(--space-8); }
+    .fact-value {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-4xl);
+      line-height: 1.2;
+      color: var(--color-text-primary);
+    }
+    .fact-value .unit { font-size: var(--font-size-lg); color: var(--color-text-secondary); margin-left: 4px; }
+    .fact-label { margin-top: var(--space-4); font-size: var(--font-size-xs); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
+
+    /* ── Business segments ── */
+    .segment-intro {
+      font-size: var(--font-size-sm); color: var(--color-text-secondary);
+      line-height: 2.1; max-width: 36em; margin-top: var(--space-7);
+    }
+    .segments { margin-top: var(--space-9); border-top: 1px solid var(--color-border-hairline); }
+    .segment {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
+      grid-template-columns: 88px minmax(0, 4fr) minmax(0, 6fr);
+      gap: var(--space-8);
+      padding: var(--space-9) 0;
+      border-bottom: 1px solid var(--color-border-hairline);
+      transition: background var(--motion-fast);
     }
-    .service-item {
-      border-top: 1px solid var(--border);
-      padding: 40px 48px 40px 0;
+    .segment:hover { background: rgba(255, 255, 255, 0.02); }
+    .segment-num {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-lg);
+      color: var(--color-accent);
+      padding-top: 6px;
     }
-    .service-item:nth-child(even) { padding-right: 0; padding-left: 48px; border-left: 1px solid var(--border); }
-    .service-num {
-      font-size: 0.7rem;
-      color: var(--gray);
-      letter-spacing: 0.12em;
-      margin-bottom: 20px;
-      font-weight: 300;
+    .segment h3 {
+      font-family: var(--font-serif-jp);
+      font-size: var(--font-size-3xl);
+      font-weight: 500;
+      line-height: 1.5;
     }
-    .service-item h3 {
-      font-family: var(--serif);
-      font-size: 1.45rem;
-      font-weight: 400;
-      margin-bottom: 16px;
-      letter-spacing: 0.01em;
+    .segment-status {
+      display: inline-block;
+      margin-top: var(--space-4);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.16em;
+      color: var(--color-accent);
+      border: 1px solid var(--color-border-hairline);
+      padding: 5px 14px;
     }
-    .service-item p {
-      font-size: 0.88rem;
-      color: var(--gray);
-      line-height: 2;
-      font-weight: 300;
+    .segment-body p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; }
+    .segment-list { list-style: none; margin-top: var(--space-6); }
+    .segment-list li {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      padding: var(--space-4) 0 var(--space-4) var(--space-6);
+      border-top: 1px solid var(--color-border-hairline);
+      position: relative;
+    }
+    .segment-list li::before {
+      content: ""; position: absolute; left: 4px; top: 50%;
+      width: 8px; height: 1px; background: var(--color-border-strong);
+    }
+    .segment-note {
+      margin-top: var(--space-6);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-tertiary);
+      line-height: 1.9;
     }
 
     /* ── Company ── */
-    #company { background: var(--light-gray); }
-    .company-layout {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 100px;
-      align-items: start;
-      margin-top: 60px;
+    .company-grid {
+      display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+      gap: var(--space-10); align-items: start; margin-top: var(--space-4);
     }
     .company-lead {
-      font-size: 0.92rem;
-      color: var(--gray);
-      line-height: 2.1;
-      font-weight: 300;
-      margin-top: 24px;
+      margin-top: var(--space-7);
+      font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.2;
     }
     .company-table { width: 100%; border-collapse: collapse; }
-    .company-table tr { border-bottom: 1px solid var(--border); }
-    .company-table tr:first-child { border-top: 1px solid var(--border); }
-    .company-table td { padding: 22px 0; font-size: 0.88rem; vertical-align: top; }
-    .company-table td:first-child {
-      color: var(--gray);
-      width: 150px;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      font-weight: 300;
-      padding-right: 20px;
+    .company-table th, .company-table td {
+      text-align: left; vertical-align: top;
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border-hairline);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-base);
     }
+    .company-table tr:first-child th, .company-table tr:first-child td { border-top: 1px solid var(--color-border-hairline); }
+    .company-table th {
+      width: 9em;
+      color: var(--color-text-tertiary);
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.12em;
+      padding-right: var(--space-6);
+      white-space: nowrap;
+    }
+    .company-table td { color: var(--color-text-primary); line-height: 2; }
+
+    .text-link {
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-strong);
+      padding-bottom: 2px;
+      transition: color var(--motion-fast), border-color var(--motion-fast);
+    }
+    .text-link:hover, .text-link:focus-visible { color: var(--color-accent); }
 
     /* ── Contact ── */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 4fr 6fr;
-      gap: 100px;
-      align-items: start;
-      margin-top: 60px;
+    .contact-grid {
+      display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+      gap: var(--space-10); align-items: start; margin-top: var(--space-4);
     }
-    .contact-info h2 { margin-bottom: 28px; }
-    .contact-info p {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 2;
-      font-weight: 300;
+    .contact-lead { margin-top: var(--space-7); font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.2; }
+    .contact-email { display: inline-block; margin-top: var(--space-6); }
+
+    .contact-form { display: flex; flex-direction: column; }
+    .form-group {
+      display: flex; flex-direction: column; gap: var(--space-4);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border-hairline);
     }
-    .contact-email {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 0.88rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-    }
-    .contact-email:hover { border-color: var(--black); }
-    .contact-form { display: flex; flex-direction: column; gap: 0; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; padding: 24px 0; border-bottom: 1px solid var(--border); }
-    .form-group:first-child { border-top: 1px solid var(--border); }
-    label {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
+    .form-group:first-child { border-top: 1px solid var(--color-border-hairline); }
+    .form-group label {
+      font-size: var(--font-size-xs);
+      letter-spacing: 0.18em;
+      color: var(--color-accent);
       text-transform: uppercase;
-      color: var(--gray);
     }
+    .form-group .jp-label { color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: none; margin-left: var(--space-4); }
     input, textarea {
-      border: none;
-      padding: 8px 0;
-      font-family: var(--sans);
-      font-size: 0.92rem;
       background: transparent;
-      outline: none;
-      color: var(--black);
-      font-weight: 300;
-    }
-    textarea { resize: vertical; min-height: 100px; }
-    .submit-btn {
-      margin-top: 32px;
-      padding: 18px 48px;
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
       border: none;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      width: fit-content;
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-base);
+      padding: var(--space-4) 0;
+      caret-color: var(--color-accent);
     }
-    .submit-btn:hover { opacity: 0.7; }
+    input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
+    input:focus-visible, textarea:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--color-border-strong); }
+    textarea { resize: vertical; min-height: 120px; }
+    .submit-btn { margin-top: var(--space-8); align-self: flex-start; }
 
     /* ── Footer ── */
-    footer {
-      padding: 44px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.72rem;
-      color: var(--gray);
-      letter-spacing: 0.06em;
+    .site-footer {
+      border-top: 1px solid var(--color-border-hairline);
+      padding: var(--space-9) var(--gutter);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
+      flex-wrap: wrap;
     }
-    .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--black); }
+    .footer-wordmark {
+      font-family: var(--font-serif);
+      font-size: var(--font-size-md);
+      border: 1px solid var(--color-text-primary);
+      padding: 8px 18px;
+    }
+    .footer-copy { font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; }
+    .to-top {
+      font-size: var(--font-size-xs); letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+    .to-top:hover, .to-top:focus-visible { color: var(--color-accent); }
 
-    /* ── Mobile ── */
-    @media (max-width: 900px) {
-      header { padding: 0 24px; height: 60px; }
-      nav { gap: 20px; }
-      nav a { font-size: 0.68rem; }
-      .nav-cta { padding: 8px 18px; }
-      .hero, section { padding-left: 24px; padding-right: 24px; }
-      .hero { padding-top: 100px; padding-bottom: 80px; }
-      section { padding-top: 80px; padding-bottom: 80px; }
-      .hero-divider { display: none; }
-      .philosophy-layout,
-      .service-grid,
-      .company-layout,
-      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
-      .service-item:nth-child(even) { padding-left: 0; border-left: none; }
-      footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    /* ── Reveal animation ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--motion-normal) var(--ease), transform var(--motion-normal) var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: var(--motion-instant) !important; animation: none !important; }
+    }
+
+    /* ================================================================
+       Responsive
+       ================================================================ */
+    @media (max-width: 960px) {
+      .site-nav { display: none; }
+      .menu-toggle { display: block; }
+      .hero-grid { grid-template-columns: 1fr; gap: var(--space-7); }
+      .hero-scroll { display: none; }
+      .philosophy-grid, .company-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+      .facts { grid-template-columns: 1fr; }
+      .fact + .fact { border-left: none; border-top: 1px solid var(--color-border-hairline); padding-left: 0; margin-top: var(--space-6); padding-top: var(--space-6); }
+      .segment { grid-template-columns: 1fr; gap: var(--space-5); padding: var(--space-8) 0; }
+      .segment-num { padding-top: 0; }
+      .section { padding-top: var(--space-10); padding-bottom: var(--space-10); }
+      .company-table th { width: 7em; }
     }
   </style>
 </head>
 <body>
 
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
   <!-- Header -->
-  <header>
-    <div class="logo">Whitestone</div>
-    <nav>
-      <a href="#service">Service</a>
-      <a href="#company">Company</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+  <header class="site-header" id="siteHeader">
+    <a class="wordmark" href="#top" aria-label="Whitestone ホーム">Whitestone</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a href="#philosophy">私たちの流儀</a>
+      <a href="#business">ビジネス</a>
+      <a href="#company">会社情報</a>
+      <a href="#contact" class="nav-cta">お問い合わせ</a>
     </nav>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">MENU</button>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <p class="hero-eyebrow">Whitestone Inc. — Sales Agency</p>
-    <h1>Driving Growth Through<br><em>Strategic Sales.</em></h1>
-    <p class="hero-sub">
-      企業の成長を、戦略的な営業活動で加速する。<br>
-      Whitestoneは、確かな成果にコミットします。
-    </p>
-    <a href="#service" class="btn-link">Our Services</a>
-    <div class="hero-divider">Whitestone Inc. 2026</div>
-  </section>
+  <!-- Mobile menu -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="モバイルナビゲーション">
+    <button class="menu-close" id="menuClose">CLOSE</button>
+    <a href="#philosophy">私たちの流儀</a>
+    <a href="#business">ビジネス</a>
+    <a href="#company">会社情報</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
 
-  <!-- Philosophy -->
-  <section id="philosophy">
-    <p class="section-label">Our Philosophy</p>
-    <div class="philosophy-layout">
-      <div>
-        <h2>営業は、<br>事業の<em style="font-family: var(--serif); font-style: italic;">根幹</em>だ。</h2>
-        <p class="philosophy-text">
-          どれほど優れたプロダクトやサービスも、届けられなければ意味を持たない。<br>
-          Whitestoneは、クライアントの営業機能を戦略・実行の両面から支え、持続的な事業成長を実現します。
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <h1 class="reveal"><span class="en">Whitestone</span><span class="nowrap">と共に、</span><br />次の成長を築く。</h1>
+          <div class="hero-actions reveal">
+            <a href="#business" class="btn btn--solid">事業を見る</a>
+            <a href="#contact" class="btn">相談する</a>
+          </div>
+        </div>
+        <p class="hero-sub reveal">
+          Whitestoneは、営業と人材のプロフェッショナルとして、企業の持続的な成長を支える事業会社です<sup>［1］</sup>
         </p>
       </div>
-      <div>
-        <p class="philosophy-quote">
-          "We don't just fill a sales role.<br>
-          We become the engine<br>
-          of your growth."
+      <p class="hero-scroll" aria-hidden="true">Scroll</p>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="section" id="philosophy">
+      <p class="section-label">Our Philosophy　私たちの流儀</p>
+      <div class="philosophy-grid">
+        <div class="reveal">
+          <h2>営業は、事業の根幹だ。</h2>
+          <p class="philosophy-text">
+            どれほど優れたプロダクトやサービスも、届けられなければ意味を持たない。
+            Whitestoneは、クライアントの営業機能を戦略と実行の両面から支え、
+            「売る力」そのものを事業の資産に変えていく。
+            そして営業で培った対人の力を、人と仕事をつなぐ事業へ広げている。
+          </p>
+        </div>
+        <p class="philosophy-quote reveal">
+          "We don't just fill a sales role.<br />
+          We become the engine of your growth."
         </p>
       </div>
-    </div>
-  </section>
+      <div class="facts reveal">
+        <div class="fact">
+          <p class="fact-value">2026<span class="unit">年</span></p>
+          <p class="fact-label">設立</p>
+        </div>
+        <div class="fact">
+          <p class="fact-value">3<span class="unit">領域</span></p>
+          <p class="fact-label">事業領域（営業・人材・資産設計）</p>
+        </div>
+        <div class="fact">
+          <p class="fact-value">一気通貫</p>
+          <p class="fact-label">新規開拓からクロージング、入社後の定着まで</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Service -->
-  <section id="service">
-    <p class="section-label">What We Do</p>
-    <h2>事業内容</h2>
-    <p class="service-intro">
-      Whitestoneは営業プロセス全体をカバーする、総合的な営業代行・支援サービスを提供します。
-    </p>
-    <div class="service-grid">
-      <div class="service-item">
-        <p class="service-num">01</p>
-        <h3>営業代行</h3>
-        <p>新規開拓からクロージングまで、営業プロセス全体を代行します。テレアポ・商談・提案書作成・フォローアップを一貫して担い、貴社のリソースを本業に集中させます。</p>
-      </div>
-      <div class="service-item">
-        <p class="service-num">02</p>
-        <h3>営業戦略コンサルティング</h3>
-        <p>市場分析・ターゲット設計・トークスクリプト・KPI策定まで、データに基づいた営業戦略を構築。現場で機能する仕組みを設計します。</p>
-      </div>
-      <div class="service-item">
-        <p class="service-num">03</p>
-        <h3>インサイドセールス構築</h3>
-        <p>リード獲得から商談化までの一連のインサイドセールス体制を設計・運用。効率的な営業ファネルの構築を支援します。</p>
-      </div>
-      <div class="service-item">
-        <p class="service-num">04</p>
-        <h3>営業組織支援</h3>
-        <p>採用・研修・評価制度など、クライアントの営業組織そのものを強化するための人材・体制支援を行います。</p>
-      </div>
-      <div class="service-item">
-        <p class="service-num">05</p>
-        <h3>保険・資産設計</h3>
-        <p>入れ替わりが激しい中、業界歴10年のFPが個人・法人のライフプランに合わせた保険設計・資産形成をご提案します。将来への備えを、確かな実績でサポートします。</p>
-      </div>
-      <div class="service-item">
-        <p class="service-num">06</p>
-        <h3>AI活用支援 <span style="display:inline-block;font-family:var(--sans);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;background:#111;color:#fff;padding:3px 10px;vertical-align:middle;margin-left:8px;">Coming Soon</span></h3>
-        <p>ChatGPTやClaudeなどのAIツールを活用した業務効率化・自動化を支援します。AI導入の戦略立案から現場への実装まで、伴走型でサポートします。</p>
-      </div>
-    </div>
-  </section>
+    <!-- Business -->
+    <section class="section section--strong" id="business">
+      <p class="section-label">Our Business　ビジネス</p>
+      <h2 class="reveal">事業内容</h2>
+      <p class="segment-intro reveal">
+        営業のプロフェッショナルとして始まったWhitestoneは、
+        「人が動き、事業が動く」領域へ事業を広げています。
+      </p>
 
-  <!-- Company -->
-  <section id="company">
-    <p class="section-label">About Us</p>
-    <div class="company-layout">
-      <div>
-        <h2>会社概要</h2>
-        <p class="company-lead">
-          Whitestoneは、企業の持続的成長を支えるために設立された営業代行・事業支援会社です。クライアントの事業フェーズに合わせた柔軟なアプローチで、確かな成果を届けます。
-        </p>
+      <div class="segments">
+        <!-- 01 営業代行 -->
+        <article class="segment reveal">
+          <p class="segment-num" aria-hidden="true">01</p>
+          <div>
+            <h3>営業代行・<br />営業支援</h3>
+            <p class="segment-status">稼働中</p>
+          </div>
+          <div class="segment-body">
+            <p>
+              新規開拓からクロージングまで、営業プロセス全体を代行。
+              戦略設計と現場での実行を一体で担い、クライアントのリソースを本業に集中させます。
+            </p>
+            <ul class="segment-list">
+              <li>営業代行（テレアポ・商談・提案・フォローアップ）</li>
+              <li>営業戦略コンサルティング（市場分析・KPI設計・トークスクリプト）</li>
+              <li>インサイドセールス構築</li>
+              <li>営業組織支援（採用・研修・評価制度）</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 02 人材紹介 -->
+        <article class="segment reveal">
+          <p class="segment-num" aria-hidden="true">02</p>
+          <div>
+            <h3>人材紹介</h3>
+            <p class="segment-status">2026年 始動準備中</p>
+          </div>
+          <div class="segment-body">
+            <p>
+              タクシー・モビリティ業界に特化した人材紹介事業を準備しています。
+              地域の交通を支える事業者と働き手を、対面の営業力でつなぎ、
+              入社後の定着まで伴走することを目指します。
+            </p>
+            <p class="segment-note">
+              ※有料職業紹介事業の許可取得に向けて準備中です。職業紹介サービスの提供は許可取得後に開始します。
+            </p>
+          </div>
+        </article>
+
+        <!-- 03 保険・資産設計 -->
+        <article class="segment reveal">
+          <p class="segment-num" aria-hidden="true">03</p>
+          <div>
+            <h3>保険・資産設計</h3>
+          </div>
+          <div class="segment-body">
+            <p>
+              業界歴10年のファイナンシャルプランナーが、個人・法人のライフプランに合わせた
+              保険設計・資産形成をご提案。将来への備えを、確かな実績でサポートします。
+            </p>
+          </div>
+        </article>
+
+        <!-- 04 AI活用支援 -->
+        <article class="segment reveal">
+          <p class="segment-num" aria-hidden="true">04</p>
+          <div>
+            <h3>AI活用支援</h3>
+            <p class="segment-status">Coming Soon</p>
+          </div>
+          <div class="segment-body">
+            <p>
+              生成AIを活用した業務効率化・自動化の支援を準備中です。
+              導入の戦略立案から現場への実装まで、伴走型でのサポートを予定しています。
+            </p>
+          </div>
+        </article>
       </div>
-      <div>
-        <table class="company-table">
+    </section>
+
+    <!-- Company -->
+    <section class="section" id="company">
+      <p class="section-label">About Us　会社情報</p>
+      <div class="company-grid">
+        <div class="reveal">
+          <h2>会社概要</h2>
+          <p class="company-lead">
+            Whitestoneは、企業の持続的成長を支えるために設立された事業会社です。
+            クライアントの事業フェーズに合わせた柔軟なアプローチで、確かな成果を届けます。
+          </p>
+        </div>
+        <table class="company-table reveal">
           <tr>
-            <td>社名</td>
+            <th scope="row">社名</th>
             <td>Whitestone株式会社</td>
           </tr>
           <tr>
-            <td>代表取締役</td>
-            <td>原 和真<br>原 壮真</td>
+            <th scope="row">代表取締役</th>
+            <td>原 和真／原 壮真</td>
           </tr>
           <tr>
-            <td>設立</td>
+            <th scope="row">設立</th>
             <td>2026年2月4日</td>
           </tr>
           <tr>
-            <td>事業内容</td>
-            <td>営業代行・営業戦略コンサルティング・インサイドセールス構築・営業組織支援</td>
+            <th scope="row">事業内容</th>
+            <td>営業代行・営業戦略コンサルティング・インサイドセールス構築・営業組織支援・人材紹介（準備中）・保険・資産設計</td>
           </tr>
           <tr>
-            <td>お問い合わせ</td>
-            <td><a href="mailto:shoma.whitestone@gmail.com" class="contact-email">shoma.whitestone@gmail.com</a></td>
+            <th scope="row">お問い合わせ</th>
+            <td><a class="text-link" href="mailto:shoma.whitestone@gmail.com">shoma.whitestone@gmail.com</a></td>
           </tr>
         </table>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <p class="section-label">Get in Touch</p>
-    <div class="contact-layout">
-      <div class="contact-info">
-        <h2>お問い合わせ</h2>
-        <p>
-          サービスに関するご相談・お見積りは<br>お気軽にご連絡ください。<br>通常2営業日以内にご返信いたします。
-        </p>
-        <a href="mailto:shoma.whitestone@gmail.com" class="contact-email">
-          shoma.whitestone@gmail.com
-        </a>
+    <!-- Contact -->
+    <section class="section section--strong" id="contact">
+      <p class="section-label">Get in Touch　お問い合わせ</p>
+      <div class="contact-grid">
+        <div class="reveal">
+          <h2>まずは、<br /><span class="nowrap">お話を</span><span class="nowrap">聞かせて</span><span class="nowrap">ください。</span></h2>
+          <p class="contact-lead">
+            サービスに関するご相談・お見積りはお気軽にご連絡ください。<br />
+            通常2営業日以内にご返信いたします。
+          </p>
+          <a class="text-link contact-email" href="mailto:shoma.whitestone@gmail.com">shoma.whitestone@gmail.com</a>
+        </div>
+        <form class="contact-form reveal" action="https://formspree.io/f/xgoqlvre" method="POST">
+          <div class="form-group">
+            <label for="name">Name<span class="jp-label">お名前（必須）</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="山田 太郎" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company<span class="jp-label">会社名</span></label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="株式会社〇〇" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email<span class="jp-label">メールアドレス（必須）</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="example@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message<span class="jp-label">お問い合わせ内容（必須）</span></label>
+            <textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--solid submit-btn">送信する</button>
+        </form>
       </div>
-      <!-- Formspree：shoma.whitestone@gmail.com でサインアップし、フォームIDを取得してactionを更新 -->
-      <form
-        class="contact-form"
-        action="https://formspree.io/f/xgoqlvre"
-        method="POST"
-      >
-        <div class="form-group">
-          <label for="name">お名前 *</label>
-          <input type="text" id="name" name="name" placeholder="山田 太郎" required />
-        </div>
-        <div class="form-group">
-          <label for="company">会社名</label>
-          <input type="text" id="company" name="company" placeholder="株式会社〇〇" />
-        </div>
-        <div class="form-group">
-          <label for="email">メールアドレス *</label>
-          <input type="email" id="email" name="email" placeholder="example@company.com" required />
-        </div>
-        <div class="form-group">
-          <label for="message">お問い合わせ内容 *</label>
-          <textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Send Message →</button>
-      </form>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-logo">Whitestone</div>
-    <p>© 2026 Whitestone Inc. All Rights Reserved.</p>
+  <footer class="site-footer">
+    <p class="footer-wordmark">Whitestone</p>
+    <p class="footer-copy">© 2026 Whitestone Inc. All Rights Reserved.　［1］営業支援・人材関連事業を中心とする当社の事業内容を示すものであり、特定の成果を保証するものではありません。</p>
+    <a class="to-top" href="#top">Top ↑</a>
   </footer>
 
-  <!-- AI事業セクション（将来公開予定）
-  <section id="ai">
-    <p class="section-label">Innovation</p>
-    <h2>AI事業</h2>
-    ...
-  </section>
-  -->
+  <script>
+    // ヘッダー：スクロールで背景を付与
+    const header = document.getElementById('siteHeader');
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // モバイルメニュー
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('menuClose');
+    const setMenu = (open) => {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) closeBtn.focus(); else toggle.focus();
+    };
+    toggle.addEventListener('click', () => setMenu(true));
+    closeBtn.addEventListener('click', () => setMenu(false));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false);
+    });
+
+    // スクロールリビール（reduced-motion時はCSSで無効化済み）
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
 
 </body>
 </html>
