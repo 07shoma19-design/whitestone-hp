@@ -585,7 +585,13 @@ input, textarea {
 input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
 input:focus-visible, textarea:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--color-accent); }
 textarea { resize: vertical; min-height: 120px; }
+.contact-note {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 2;
+}
 .submit-btn { margin-top: var(--space-8); align-self: flex-start; }
+a.submit-btn { text-decoration: none; }
 
 /* ── Footer ── */
 .site-footer {
