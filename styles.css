@@ -8,7 +8,7 @@
   /* color（白基調・ストーン＋ブロンズ） */
   --color-text-primary: #1c1c1c;
   --color-text-secondary: #565656;
-  --color-text-tertiary: #767676;
+  --color-text-tertiary: #6e6862; /* #f6f3ef上でコントラスト比4.97:1（AA） */
   --color-surface-base: #ffffff;
   --color-surface-strong: #f6f3ef;   /* ストーングレー（暖色系の淡地） */
   --color-surface-raised: #9c562c;   /* ブロンズ（CTA塗り・白文字でAA 5.5:1） */
@@ -54,13 +54,13 @@
   /* motion */
   --motion-instant: 3ms;
   --motion-fast: 300ms;
-  --motion-normal: 900ms;
+  --motion-normal: 600ms;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 108px; }
 body {
   font-family: var(--font-sans);
   font-size: var(--font-size-md);
@@ -75,7 +75,7 @@ img { max-width: 100%; display: block; }
 .nowrap { white-space: nowrap; }
 
 /* ── Focus visible ── */
-:focus { outline: none; }
+:focus:not(:focus-visible) { outline: none; }
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
@@ -565,26 +565,29 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--color-border-hairline);
 }
 .form-group:first-child { border-top: 1px solid var(--color-border-hairline); }
-.form-group label {
+.form-heading {
   font-size: var(--font-size-xs);
   letter-spacing: 0.18em;
   color: var(--color-accent);
   text-transform: uppercase;
 }
-.form-group .jp-label { color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: none; margin-left: var(--space-4); }
-input, textarea {
+.form-heading .jp-label { color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: none; margin-left: var(--space-4); }
+.copy-email {
+  margin-top: var(--space-5);
+  align-self: flex-start;
   background: transparent;
   border: none;
-  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
   font-family: var(--font-sans);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-base);
-  padding: var(--space-4) 0;
-  caret-color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.06em;
+  padding: 10px 2px;
+  cursor: pointer;
+  transition: color var(--motion-fast), border-color var(--motion-fast);
 }
-input::placeholder, textarea::placeholder { color: var(--color-text-tertiary); }
-input:focus-visible, textarea:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--color-accent); }
-textarea { resize: vertical; min-height: 120px; }
+.copy-email:hover, .copy-email:focus-visible { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.copy-feedback { margin-top: var(--space-4); font-size: var(--font-size-sm); color: var(--color-accent); min-height: 1.5em; }
 .contact-note {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
@@ -592,6 +595,38 @@ textarea { resize: vertical; min-height: 120px; }
 }
 .submit-btn { margin-top: var(--space-8); align-self: flex-start; }
 a.submit-btn { text-decoration: none; }
+
+/* ── Policy（プライバシーポリシー等の文章ページ） ── */
+.policy-body { max-width: 44em; }
+.policy-body h2 {
+  font-family: var(--font-serif-jp);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  margin-top: var(--space-9);
+}
+.policy-body h2:first-child { margin-top: 0; }
+.policy-body p, .policy-body ul { margin-top: var(--space-5); color: var(--color-text-secondary); line-height: 2; }
+.policy-body ul { padding-left: 1.4em; }
+.policy-date { margin-top: var(--space-9); color: var(--color-text-tertiary); }
+
+/* ── FAQ ── */
+.faq-list { margin-top: var(--space-8); max-width: 46em; }
+.faq-item { padding: var(--space-6) 0; border-bottom: 1px solid var(--color-border-hairline); }
+.faq-item:first-child { border-top: 1px solid var(--color-border-hairline); }
+.faq-q { font-family: var(--font-serif-jp); font-size: var(--font-size-lg); font-weight: 500; }
+.faq-q::before { content: "Q．"; color: var(--color-accent); }
+.faq-a { margin-top: var(--space-4); color: var(--color-text-secondary); line-height: 2; }
+
+/* ── Footer nav ── */
+.footer-nav a {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--color-border-strong);
+  padding: var(--space-4) 0;
+  transition: color var(--motion-fast), border-color var(--motion-fast);
+}
+.footer-nav a:hover, .footer-nav a:focus-visible { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 
 /* ── Footer ── */
 .site-footer {
@@ -611,16 +646,29 @@ a.submit-btn { text-decoration: none; }
 .to-top {
   font-size: var(--font-size-xs); letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--color-text-secondary);
+  /* WCAG 2.2 ターゲットサイズ確保（視覚サイズは据え置き） */
+  padding: var(--space-5) var(--space-5);
+  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
 }
 .to-top:hover, .to-top:focus-visible { color: var(--color-accent); }
 
-/* ── Reveal animation ── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--motion-normal) var(--ease), transform var(--motion-normal) var(--ease); }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* ── Reveal animation ──
+   .jsクラスはscript.jsが付与する。JS無効・読込失敗時はこのブロックが
+   適用されず、全コンテンツが最初から表示される（単一障害点の回避） */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--motion-normal) var(--ease), transform var(--motion-normal) var(--ease); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { transition-duration: var(--motion-instant) !important; animation: none !important; }
+}
+
+/* メニュー展開中は背景スクロールをロック */
+body.menu-open { overflow: hidden; }
+
+/* PC幅ではモバイルメニューを強制的に閉じる（開いたままの回転・リサイズ対策） */
+@media (min-width: 961px) {
+  .mobile-menu { display: none !important; }
 }
 
 /* ================================================================

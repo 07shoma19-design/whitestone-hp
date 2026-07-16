@@ -9,13 +9,17 @@
   <meta name="robots" content="index, follow" />
 
   <!-- OGP -->
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Whitestone株式会社" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:title" content="保険・資産設計｜Whitestone株式会社" />
   <meta property="og:description" content="業界歴10年のファイナンシャルプランナーが、個人・法人のライフプランに合わせた保険設計・資産形成をご提案します。" />
   <meta property="og:url" content="https://whitestone-inc.co.jp/hoken.html" />
+  <meta property="og:image" content="https://whitestone-inc.co.jp/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://whitestone-inc.co.jp/og-image.png" />
 
   <!-- 構造化データ -->
   <script type="application/ld+json">
@@ -26,8 +30,7 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://whitestone-inc.co.jp/" },
-          { "@type": "ListItem", "position": 2, "name": "事業内容", "item": "https://whitestone-inc.co.jp/#business" },
-          { "@type": "ListItem", "position": 3, "name": "保険・資産設計", "item": "https://whitestone-inc.co.jp/hoken.html" }
+          { "@type": "ListItem", "position": 2, "name": "保険・資産設計", "item": "https://whitestone-inc.co.jp/hoken.html" }
         ]
       },
       {
@@ -35,15 +38,51 @@
         "name": "保険・資産設計",
         "description": "個人・法人のライフプランに合わせた保険設計・保障の見直し・資産形成のご提案。",
         "provider": { "@type": "Organization", "name": "Whitestone株式会社", "url": "https://whitestone-inc.co.jp/" },
-        "areaServed": { "@type": "Country", "name": "日本" }
+        "areaServed": [ { "@type": "AdministrativeArea", "name": "和歌山県" }, { "@type": "Country", "name": "日本" } ]
       }
     ]
   }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "相談には誰が対応しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "業界歴10年のファイナンシャルプランナーが、初回のご相談からプランのご提案まで一貫して担当します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "個人でも法人でも相談できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "どちらも可能です。個人のライフプラン設計・保障の見直しから、法人の保障設計まで対応します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どのように相談すればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "まずはメールにてご連絡ください。ご相談内容に応じて、オンラインを中心に柔軟に対応します。"
+      }
+    }
+  ]
+}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#faf7f2" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -152,6 +191,26 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section">
+      <p class="section-label">FAQ　よくあるご質問</p>
+      <h2 class="reveal">よくあるご質問</h2>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <h3 class="faq-q">相談には誰が対応しますか？</h3>
+          <p class="faq-a">業界歴10年のファイナンシャルプランナーが、初回のご相談からプランのご提案まで一貫して担当します。</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">個人でも法人でも相談できますか？</h3>
+          <p class="faq-a">どちらも可能です。個人のライフプラン設計・保障の見直しから、法人の保障設計まで対応します。</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3 class="faq-q">どのように相談すればよいですか？</h3>
+          <p class="faq-a">まずはメールにてご連絡ください。ご相談内容に応じて、オンラインを中心に柔軟に対応します。</p>
+        </div>
+      </div>
+    </section>
+
     <!-- 他事業 -->
     <section class="section">
       <p class="section-label">Other Business　その他の事業</p>
@@ -172,6 +231,9 @@
   <footer class="site-footer">
     <p class="footer-wordmark">Whitestone</p>
     <p class="footer-copy">© 2026 Whitestone Inc. All Rights Reserved.</p>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <a href="privacy.html">プライバシーポリシー</a>
+    </nav>
     <a class="to-top" href="#top">Top ↑</a>
   </footer>
 
