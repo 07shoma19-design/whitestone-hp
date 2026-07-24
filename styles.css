@@ -8,14 +8,14 @@
   /* color（白基調・ストーン＋ブロンズ） */
   --color-text-primary: #1c1c1c;
   --color-text-secondary: #565656;
-  --color-text-tertiary: #6e6862; /* #f6f3ef上でコントラスト比4.97:1（AA） */
+  --color-text-tertiary: #5d6164; /* #f2f3f4上でコントラスト比5.6:1（AA） */
   --color-surface-base: #ffffff;
-  --color-surface-strong: #f6f3ef;   /* ストーングレー（暖色系の淡地） */
-  --color-surface-raised: #9c562c;   /* ブロンズ（CTA塗り・白文字でAA 5.5:1） */
-  --color-border-strong: #c39d78;    /* タン（枠線・罫線の強調） */
-  --color-border-hairline: #e5e0d8;  /* 暖色ヘアライン */
-  --color-accent: #9c562c;           /* 小サイズ文字のアクセント（AA対応） */
-  --color-accent-display: #b96634;   /* 大きい数字・装飾専用（小さい文字に使わない） */
+  --color-surface-strong: #f2f3f4;   /* ストーングレー（無彩・微冷の淡地） */
+  --color-surface-raised: #1c1c1c;   /* 黒（CTA塗り・白文字でAA 16:1）＝Blackstone銅CTAの無彩反転 */
+  --color-border-strong: #1c1c1c;    /* 黒（枠線・罫線の強調）＝黒地白罫線の反転 */
+  --color-border-hairline: #e2e4e5;  /* 無彩ヘアライン */
+  --color-accent: #45494c;           /* 小サイズ文字のアクセント（無彩・白地で9.2:1） */
+  --color-accent-display: #1c1c1c;   /* 大きい数字・装飾（無彩化により制約解消） */
   --color-on-raised: #ffffff;
 
   /* font */
@@ -208,8 +208,8 @@ img { max-width: 100%; display: block; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(110% 80% at 88% 8%, rgba(195, 157, 120, 0.20) 0%, rgba(255, 255, 255, 0) 55%),
-    radial-gradient(90% 70% at 5% 100%, rgba(246, 243, 239, 0.9) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(110% 80% at 88% 8%, rgba(184, 190, 195, 0.22) 0%, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(90% 70% at 5% 100%, rgba(242, 243, 244, 0.9) 0%, rgba(255, 255, 255, 0) 60%),
     var(--color-surface-base);
 }
 .hero-grid {
@@ -249,7 +249,7 @@ img { max-width: 100%; display: block; }
 .page-hero {
   padding: calc(92px + var(--space-10)) var(--gutter) var(--space-9);
   background:
-    radial-gradient(100% 90% at 92% 0%, rgba(195, 157, 120, 0.18) 0%, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(100% 90% at 92% 0%, rgba(184, 190, 195, 0.20) 0%, rgba(255, 255, 255, 0) 55%),
     var(--color-surface-base);
 }
 .breadcrumb {
@@ -418,7 +418,7 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--color-border-hairline);
   transition: background var(--motion-fast);
 }
-.segment:hover { background: rgba(195, 157, 120, 0.06); }
+.segment:hover { background: rgba(28, 28, 28, 0.03); }
 .segment-num {
   font-family: var(--font-serif);
   font-size: var(--font-size-lg);
