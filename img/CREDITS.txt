@@ -1,6 +1,7 @@
 Photos: Unsplash License (https://unsplash.com/license) - free for commercial use, no attribution required.
-hero-home.jpg   = unsplash.com/photos/photo-1524230572899-a752b3835840
-hero-jinzai.jpg = unsplash.com/photos/photo-1519674921880-e784bc34ebd4
-hero-eigyo.jpg  = unsplash.com/photos/photo-1586522471252-68f4b108ff2a
-hero-hoken.jpg  = unsplash.com/photos/photo-1773433434004-c4fcec79a461
-Retrieved 2026-07-24.
+hero-home.jpg   = unsplash.com/photos/photo-1572635148687-307f8ca9b737 (ribbed white wall)
+hero-jinzai.jpg = unsplash.com/photos/photo-1522123472015-2d9f7ee5608d (window light on wall)
+hero-eigyo.jpg  = unsplash.com/photos/photo-1521194263619-39ecc5b55c61 (geometric light and shadow)
+hero-hoken.jpg  = unsplash.com/photos/photo-1600172454132-ada7faa101cf (leaf shadows on white)
+band-marble.jpg = unsplash.com/photos/photo-1640280882429-204f63d777e7 (white marble veining)
+All displayed grayscale via CSS filter. Retrieved 2026-07-24.
