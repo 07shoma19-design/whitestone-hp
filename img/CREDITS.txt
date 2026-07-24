@@ -1,0 +1,6 @@
+Photos: Unsplash License (https://unsplash.com/license) - free for commercial use, no attribution required.
+hero-home.jpg   = unsplash.com/photos/photo-1524230572899-a752b3835840
+hero-jinzai.jpg = unsplash.com/photos/photo-1519674921880-e784bc34ebd4
+hero-eigyo.jpg  = unsplash.com/photos/photo-1586522471252-68f4b108ff2a
+hero-hoken.jpg  = unsplash.com/photos/photo-1773433434004-c4fcec79a461
+Retrieved 2026-07-24.

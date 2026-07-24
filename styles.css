@@ -208,9 +208,9 @@ img { max-width: 100%; display: block; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(110% 80% at 88% 8%, rgba(184, 190, 195, 0.22) 0%, rgba(255, 255, 255, 0) 55%),
-    radial-gradient(90% 70% at 5% 100%, rgba(242, 243, 244, 0.9) 0%, rgba(255, 255, 255, 0) 60%),
-    var(--color-surface-base);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0.52) 100%),
+    url("img/hero-home.jpg") center / cover no-repeat,
+    var(--color-surface-base); /* 白ウォッシュ越しの写真＝Blackstoneの暗写真ヒーローの反転 */
 }
 .hero-grid {
   display: grid;
@@ -252,6 +252,15 @@ img { max-width: 100%; display: block; }
     radial-gradient(100% 90% at 92% 0%, rgba(184, 190, 195, 0.20) 0%, rgba(255, 255, 255, 0) 55%),
     var(--color-surface-base);
 }
+.page-hero--photo {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.82) 50%, rgba(255, 255, 255, 0.6) 100%),
+    var(--hero-photo) center / cover no-repeat,
+    var(--color-surface-base);
+}
+.page-hero--jinzai { --hero-photo: url("img/hero-jinzai.jpg"); }
+.page-hero--eigyo { --hero-photo: url("img/hero-eigyo.jpg"); }
+.page-hero--hoken { --hero-photo: url("img/hero-hoken.jpg"); }
 .breadcrumb {
   display: flex; flex-wrap: wrap; gap: var(--space-4);
   font-size: var(--font-size-xs);
@@ -397,12 +406,13 @@ img { max-width: 100%; display: block; }
 .fact + .fact { border-left: 1px solid var(--color-border-hairline); padding-left: var(--space-8); }
 .fact-value {
   font-family: var(--font-serif);
-  font-size: var(--font-size-4xl);
-  line-height: 1.2;
+  font-size: clamp(40px, 5vw, 64px); /* Blackstoneの巨大数字文法 */
+  line-height: 1.15;
   color: var(--color-text-primary);
 }
 .fact-value .unit { font-size: var(--font-size-lg); color: var(--color-text-secondary); margin-left: 4px; }
 .fact-label { margin-top: var(--space-4); font-size: var(--font-size-xs); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
+.facts-note { margin-top: var(--space-5); font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; }
 
 /* ── Business segments（トップの事業一覧） ── */
 .segment-intro {
