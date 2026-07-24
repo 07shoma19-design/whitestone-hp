@@ -31,7 +31,7 @@
   --font-size-2xl: 22.4px;
   --font-size-3xl: 24px;
   --font-size-4xl: 40px;
-  --font-size-display: clamp(40px, 6.4vw, 88px);
+  --font-size-display: clamp(42px, 7vw, 100px);
   --font-size-heading: clamp(28px, 3.6vw, 52px);
   --font-size-page-title: clamp(34px, 4.6vw, 64px);
   --font-weight-base: 300;
@@ -107,7 +107,9 @@ img { max-width: 100%; display: block; }
               border-color var(--motion-fast) var(--ease);
 }
 .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   height: 68px;
   border-bottom-color: var(--color-border-hairline);
 }
@@ -207,11 +209,20 @@ img { max-width: 100%; display: block; }
   padding: var(--space-11) var(--gutter) var(--space-10);
   position: relative;
   overflow: hidden;
+  background: var(--color-surface-base);
+}
+/* 白ウォッシュ越しの写真＝Blackstoneの暗写真ヒーローの反転。レイヤー化してスロー・ズーム */
+.hero::before {
+  content: "";
+  position: absolute; inset: -4%;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0.52) 100%),
-    url("img/hero-home.jpg") center / cover no-repeat,
-    var(--color-surface-base); /* 白ウォッシュ越しの写真＝Blackstoneの暗写真ヒーローの反転 */
+    url("img/hero-home.jpg") center / cover no-repeat;
+  animation: heroZoom 16s var(--ease) both;
 }
+.hero > * { position: relative; }
+@keyframes heroZoom { from { transform: scale(1.055); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .hero::before { animation: none; } }
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
@@ -222,7 +233,7 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-serif-jp);
   font-size: var(--font-size-display);
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.16;
   letter-spacing: 0.02em;
 }
 .hero h1 .en { font-family: var(--font-serif); font-weight: 400; letter-spacing: 0.01em; }
@@ -414,6 +425,24 @@ img { max-width: 100%; display: block; }
 .fact-label { margin-top: var(--space-4); font-size: var(--font-size-xs); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
 .facts-note { margin-top: var(--space-5); font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; }
 
+/* ── Brand band（全幅写真の間奏。白箱ロックアップ＝純色反転のブランドモーメント） ── */
+.brand-band {
+  position: relative; overflow: hidden;
+  height: 44vh; min-height: 300px;
+  border-top: 1px solid var(--color-border-hairline);
+}
+.brand-band::before {
+  content: ""; position: absolute; inset: 0;
+  background: url("img/band-marble.jpg") center 42% / cover no-repeat;
+  filter: grayscale(100%);
+}
+.brand-band::after { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.22); }
+.brand-band .lockup {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.brand-band svg { width: min(300px, 56vw); height: auto; box-shadow: 0 8px 40px rgba(28, 28, 28, 0.10); }
+
 /* ── Business segments（トップの事業一覧） ── */
 .segment-intro {
   font-size: var(--font-size-sm); color: var(--color-text-secondary);
@@ -431,7 +460,7 @@ img { max-width: 100%; display: block; }
 .segment:hover { background: rgba(28, 28, 28, 0.03); }
 .segment-num {
   font-family: var(--font-serif);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-3xl);
   color: var(--color-accent);
   padding-top: 6px;
 }
