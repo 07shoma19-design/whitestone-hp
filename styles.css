@@ -112,17 +112,22 @@ img { max-width: 100%; display: block; }
   border-bottom-color: var(--color-border-hairline);
 }
 .wordmark {
-  font-family: var(--font-serif);
-  font-size: var(--font-size-xl);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-text-primary);
-  padding: 10px 22px;
-  white-space: nowrap;
-  transition: color var(--motion-fast), border-color var(--motion-fast);
+  display: block;
+  width: 128px;
+  height: 50px;
 }
-.wordmark:hover { color: var(--color-accent); border-color: var(--color-accent); }
+.wordmark svg { display: block; width: 100%; height: 100%; }
+.wordmark .lockup-box {
+  fill: var(--color-surface-base);
+  stroke: var(--color-text-primary);
+  transition: stroke var(--motion-fast);
+}
+.wordmark .lockup-text {
+  fill: var(--color-text-primary);
+  transition: fill var(--motion-fast);
+}
+.wordmark:hover .lockup-box { stroke: var(--color-accent); }
+.wordmark:hover .lockup-text { fill: var(--color-accent); }
 
 .site-nav { display: flex; align-items: center; gap: var(--space-7); }
 .site-nav a:not(.nav-cta) {
@@ -637,11 +642,13 @@ a.submit-btn { text-decoration: none; }
   flex-wrap: wrap;
 }
 .footer-wordmark {
-  font-family: var(--font-serif);
-  font-size: var(--font-size-md);
-  border: 1px solid var(--color-text-primary);
-  padding: 8px 18px;
+  width: 150px;
+  height: 59px;
+  margin: 0;
 }
+.footer-wordmark svg { display: block; width: 100%; height: 100%; }
+.footer-wordmark .lockup-box { fill: var(--color-surface-base); }
+.footer-wordmark .lockup-text { fill: var(--color-text-primary); }
 .footer-copy { font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; max-width: 60em; }
 .to-top {
   font-size: var(--font-size-xs); letter-spacing: 0.2em; text-transform: uppercase;
