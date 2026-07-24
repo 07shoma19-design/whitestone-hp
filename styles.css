@@ -97,6 +97,7 @@ img { max-width: 100%; display: block; }
    ================================================================ */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  /* スクリム：写真ヒーロー上でもナビの可読性をAAで担保（白ページでは不可視） */
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 var(--gutter);
   height: 92px;
@@ -106,6 +107,13 @@ img { max-width: 100%; display: block; }
               height var(--motion-fast) var(--ease),
               border-color var(--motion-fast) var(--ease);
 }
+.site-header::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 175%;
+  z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 40%, rgba(255, 255, 255, 0) 100%);
+  transition: opacity var(--motion-fast);
+}
+.site-header.is-scrolled::before { opacity: 0; }
 .site-header.is-scrolled {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(12px);
