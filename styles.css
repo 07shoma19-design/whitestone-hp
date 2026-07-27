@@ -31,7 +31,10 @@
   --font-size-2xl: 22.4px;
   --font-size-3xl: 24px;
   --font-size-4xl: 40px;
-  --font-size-display: clamp(40px, 7vw, 92px);
+  /* ヒーローh1「Whitestoneと共に、／次の成長を築く。」の2行構成が全幅で成立する上限
+     （1行目≦テキスト領域0.58w−72pxから逆算。旧7vw/92pxは1280〜1920pxで4行に崩れていた。
+       上限86px＝フォールバック明朝（1行目834px@88px）でもgrid上限820pxに収まりFOUTの再折返しを防ぐ） */
+  --font-size-display: clamp(34px, 5.3vw, 86px);
   --font-size-heading: clamp(28px, 3.6vw, 52px);
   --font-size-page-title: clamp(34px, 4.6vw, 64px);
   --font-weight-base: 300;
@@ -69,10 +72,22 @@ body {
   background: var(--color-surface-base);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
+  line-break: strict;                /* 行頭の小書き仮名・長音符・中黒も禁則 */
+  hanging-punctuation: allow-end;    /* 行末の句読点ぶら下げ（Safari） */
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .nowrap { white-space: nowrap; }
+
+/* ── 日本語組版（改行・文字体裁） ──
+   意図した改行位置はHTML側の .nowrap（文節単位）で示すのが正。
+   ここでは全ページ共通の安全網のみを敷く */
+p { text-wrap: pretty; }                    /* 1〜2文字だけの行末孤立を防ぐ */
+h1, h2, h3, .ob-title { text-wrap: balance; } /* 複数行見出しの行長を揃える */
+p, li, td { overflow-wrap: break-word; }
+a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁あふれ防止 */
+/* リード段落＝文節折り返し。改行は句読点・<wbr>・.nowrap境界のみで起きる */
+.jp-phrase { word-break: keep-all; }
 
 /* ── Focus visible ── */
 :focus:not(:focus-visible) { outline: none; }
@@ -703,6 +718,7 @@ a.submit-btn { text-decoration: none; }
 .footer-wordmark .lockup-box { fill: var(--color-surface-base); }
 .footer-wordmark .lockup-text { fill: var(--color-text-primary); }
 .footer-copy { font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; max-width: 60em; }
+.footer-note { display: block; margin-top: var(--space-3); } /* 脚注は行を分けて折り返しの混線を防ぐ */
 .to-top {
   font-size: var(--font-size-xs); letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--color-text-secondary);
@@ -762,4 +778,21 @@ body.menu-open { overflow: hidden; }
   .page-hero { padding-top: calc(92px + var(--space-8)); }
   .company-table th { width: 7.5em; }
   footer.site-footer { flex-direction: column; align-items: flex-start; }
+}
+
+/* 極小幅：会社概要テーブルは見出しを上に積む（値の折り返し幅を確保） */
+@media (max-width: 360px) {
+  .company-table, .company-table tbody { display: block; }
+  .company-table tr {
+    display: block;
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-border-hairline);
+  }
+  .company-table tr:first-child { border-top: 1px solid var(--color-border-hairline); }
+  .company-table th, .company-table td {
+    display: block; width: auto;
+    padding: 0; border: none;
+  }
+  .company-table tr:first-child th, .company-table tr:first-child td { border-top: none; }
+  .company-table td { margin-top: var(--space-3); }
 }
