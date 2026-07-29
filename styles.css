@@ -86,9 +86,17 @@ p { text-wrap: pretty; }                    /* 1〜2文字だけの行末孤立�
 h1, h2, h3, .ob-title { text-wrap: balance; } /* 複数行見出しの行長を揃える */
 p, li, td { overflow-wrap: break-word; }
 a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁あふれ防止 */
-/* 段落は自然折り返し（行末まで詰める）が標準。.jp-phrase＋<wbr>はマークアップに残してあり、
-   word-break: keep-all をこのクラスに与えれば文節折りを再有効化できる
-   （2026-07-29 壮真FB「改行に違和感」＝文節折りの行末凸凹が原因→撤回） */
+/* 全段落＝文節折り（壮真確定 2026-07-29「文節での改行の方が嬉しい」）。
+   改行は句読点・<wbr>・.nowrap境界のみ。文節は「大きな意味のまとまり」8〜18字
+   （細かすぎる文節は行末が凸凹して違和感になる＝07-29午前の教訓）。
+   ここに無い文章ブロックを増やしたら、このセレクタに足すか class="jp-phrase" を付ける */
+.jp-phrase,
+.hero-sub, .page-lead, .philosophy-text, .segment-intro, .segment-body p,
+.segment-list, .segment-note, .detail-block p, .process-step p, .cta-band p,
+.faq-a, .company-lead, .contact-lead, .contact-note,
+.policy-body p, .policy-body ul, .footer-note {
+  word-break: keep-all;
+}
 
 /* ── Focus visible ── */
 :focus:not(:focus-visible) { outline: none; }
