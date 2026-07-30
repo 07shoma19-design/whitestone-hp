@@ -277,7 +277,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 2.1;
-  max-width: 22em;
+  max-width: 32em; /* 22em→32em（2026-07-30 壮真指示「表示範囲を伸ばして収める」） */
 }
 .hero-sub sup { color: var(--color-accent); font-size: 0.7em; }
 .hero-actions { margin-top: var(--space-8); display: flex; gap: var(--space-6); flex-wrap: wrap; }
@@ -332,7 +332,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 2.2;
-  max-width: 38em;
+  max-width: 42em; /* 38em→42em（2026-07-30 壮真指示「表示範囲を伸ばして収める」） */
 }
 .status-chip {
   display: inline-block;
@@ -432,7 +432,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 2.2;
-  max-width: 34em;
+  max-width: 40em; /* 34em→40em（2026-07-30 壮真指示「表示範囲を伸ばして収める」） */
 }
 .philosophy-quote {
   font-family: var(--font-serif);
