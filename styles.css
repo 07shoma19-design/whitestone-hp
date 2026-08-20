@@ -36,7 +36,7 @@
        上限86px＝フォールバック明朝（1行目834px@88px）でもgrid上限820pxに収まりFOUTの再折返しを防ぐ） */
   --font-size-display: clamp(34px, 5.3vw, 86px);
   --font-size-heading: clamp(28px, 3.6vw, 52px);
-  --font-size-page-title: clamp(34px, 4.6vw, 64px);
+  --font-size-page-title: clamp(33px, 4.6vw, 64px); /* 34→33: 320pxでh1の8字文節「ホームページを、」が可用幅272pxに収まる下限（2026-08-20実測） */
   --font-weight-base: 300;
   --line-height-base: 1.5;
 
@@ -94,6 +94,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 .hero-sub, .page-lead, .philosophy-text, .segment-intro, .segment-body p,
 .segment-list, .segment-note, .detail-block p, .process-step p, .cta-band p,
 .faq-a, .company-lead, .contact-lead, .contact-note,
+.plan-list, .plan-notes p, .plan-tagline,
 .policy-body p, .policy-body ul, .footer-note {
   word-break: keep-all;
 }
@@ -310,6 +311,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 .page-hero--jinzai { --hero-photo: url("img/hero-jinzai.jpg"); }
 .page-hero--eigyo { --hero-photo: url("img/hero-eigyo.jpg"); }
 .page-hero--hoken { --hero-photo: url("img/hero-hoken.jpg"); }
+.page-hero--web { --hero-photo: url("img/band-marble.jpg"); }
 .breadcrumb {
   display: flex; flex-wrap: wrap; gap: var(--space-4);
   font-size: var(--font-size-xs);
@@ -583,6 +585,69 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   line-height: 2;
 }
 
+/* 料金プラン（web.html。facts＋processの罫線文法で構成） */
+.plan-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-top: var(--space-9);
+}
+.plan-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 56em; }
+.plan { border-top: 1px solid var(--color-border-strong); padding-top: var(--space-6); }
+.plan-label {
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+.plan-price {
+  margin-top: var(--space-5);
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 2.6vw, 40px);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+.plan-price .unit { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-left: 4px; }
+.plan-tagline {
+  margin-top: var(--space-4);
+  font-family: var(--font-serif-jp);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: 1.7;
+}
+.plan-list { list-style: none; margin-top: var(--space-6); }
+.plan-list li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  padding: var(--space-4) 0 var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border-hairline);
+  position: relative;
+}
+.plan-list li::before {
+  content: ""; position: absolute; left: 4px; top: 50%;
+  width: 8px; height: 1px; background: var(--color-border-strong);
+}
+.plan-for {
+  margin-top: var(--space-5);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: 1.9;
+}
+.plan-notes { margin-top: var(--space-8); max-width: 44em; }
+.plan-notes p {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: 1.9;
+  margin-top: var(--space-3);
+}
+.subsidy-body { max-width: 44em; }
+.subsidy-body p {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 2.1;
+}
+.subsidy-body p:first-child { margin-top: var(--space-8); }
+
 /* CTAバンド */
 .cta-band { text-align: left; }
 .cta-band .cta-inner { max-width: 40em; }
@@ -606,6 +671,8 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-weight: 500;
   margin-top: var(--space-4);
 }
+/* 3事業リンク（4事業化後の下層ページ用）。基底の1fr 1frより後に置く＝後勝ちで有効化 */
+.other-biz--3 { grid-template-columns: repeat(3, 1fr); }
 
 /* ── Company ── */
 .company-grid {
@@ -783,6 +850,7 @@ body.menu-open { overflow: hidden; }
   .detail-block { grid-template-columns: 1fr; gap: var(--space-5); }
   .process-grid { grid-template-columns: 1fr; gap: var(--space-8); }
   .other-biz { grid-template-columns: 1fr; }
+  .plan-grid, .plan-grid--2 { grid-template-columns: 1fr; gap: var(--space-8); }
   .section { padding-top: var(--space-10); padding-bottom: var(--space-10); }
   .page-hero { padding-top: calc(92px + var(--space-8)); }
   .company-table th { width: 7.5em; }
