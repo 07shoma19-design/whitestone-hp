@@ -40,13 +40,42 @@ window.matchMedia('(min-width: 961px)').addEventListener('change', (mq) => {
 });
 
 // スクロールリビール（reduced-motion時はCSSで無効化済み）
+// .section-labelは罫線伸長、.fact-valueは数字カウントの発火にも使う
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// 数字カウントアップ：fact-value内の数値テキストを0.9秒で数え上げる（1回のみ）。
+// HTMLには最初から実値が書いてあるため、JS無効・クローラー・reduced-motionでは実値がそのまま見える
+function countUp(el) {
+  if (reducedMotion) return;
+  const node = [...el.childNodes].find(n => n.nodeType === 3 && /\d/.test(n.textContent));
+  if (!node) return;
+  const finalText = node.textContent;
+  const num = parseInt(finalText.replace(/[^0-9]/g, ''), 10);
+  if (!Number.isFinite(num) || num === 0) return;
+  const dur = 900;
+  const start = performance.now();
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const step = (now) => {
+    const p = Math.min(1, (now - start) / dur);
+    const v = Math.round(num * ease(p));
+    node.textContent = finalText.replace(/[0-9,]+/, String(v));
+    if (p < 1) requestAnimationFrame(step); else node.textContent = finalText;
+  };
+  requestAnimationFrame(step);
+}
+
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('is-visible');
+      if (e.target.classList.contains('fact-value')) countUp(e.target);
+      io.unobserve(e.target);
+    });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal, .section-label, .fact-value').forEach(el => io.observe(el));
 } else {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  document.querySelectorAll('.reveal, .section-label').forEach(el => el.classList.add('is-visible'));
 }
 
 // メールアドレスのコピー（PCでメーラー未設定でも連絡先を取得できるように）
