@@ -836,6 +836,14 @@ a.submit-btn { text-decoration: none; }
   *, *::before, *::after { transition-duration: var(--motion-instant) !important; animation: none !important; }
 }
 
+/* ── スマホ専用改行（2026-08-21）──
+   本文層の⏎（文節の行立て）はスマホ検品の指定。幅の広いPCでは行が短く
+   細切れになり右に余白が空くため、961px以上では無効化して自然折り返しに戻す。
+   見出し（h1/h2）のbrは共通＝両方で維持。960px以下の表示はこの規則の影響を受けない */
+@media (min-width: 961px) {
+  br.sp { display: none; }
+}
+
 /* メニュー展開中は背景スクロールをロック */
 body.menu-open { overflow: hidden; }
 
