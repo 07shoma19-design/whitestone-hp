@@ -278,7 +278,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 2.1;
-  max-width: 32em; /* 22em→32em（2026-07-30 壮真指示「表示範囲を伸ばして収める」） */
+  max-width: 40em; /* 22em→32em(2026-07-30)→40em(2026-08-21 壮真「表示範囲を広めに」)＝560px/40字 */
 }
 .hero-sub sup { color: var(--color-accent); font-size: 0.7em; }
 .hero-actions { margin-top: var(--space-8); display: flex; gap: var(--space-6); flex-wrap: wrap; }
@@ -344,7 +344,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 2.2;
-  max-width: 42em; /* 38em→42em（2026-07-30 壮真指示「表示範囲を伸ばして収める」） */
+  max-width: 50em; /* 38em→42em(2026-07-30)→50em(2026-08-21)＝700px/50字 */
 }
 .status-chip {
   display: inline-block;
@@ -450,7 +450,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 2.2;
-  max-width: 40em; /* 34em→40em（2026-07-30 壮真指示「表示範囲を伸ばして収める」） */
+  max-width: 48em; /* 34em→40em(2026-07-30)→48em(2026-08-21)＝672px/48字 */
 }
 .philosophy-quote {
   font-family: var(--font-serif);
@@ -502,7 +502,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 /* ── Business segments（トップの事業一覧） ── */
 .segment-intro {
   font-size: var(--font-size-sm); color: var(--color-text-secondary);
-  line-height: 2.1; max-width: 36em; margin-top: var(--space-7);
+  line-height: 2.1; max-width: 46em; /* 36em→46em(2026-08-21)＝644px/46字 */ margin-top: var(--space-7);
 }
 .segments { margin-top: var(--space-9); border-top: 1px solid var(--color-border-hairline); }
 .segment {
@@ -535,7 +535,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   border: 1px solid var(--color-border-strong);
   padding: 5px 14px;
 }
-.segment-body p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; }
+.segment-body p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; max-width: 50em; } /* 同上（2026-08-21） */
 .segment-list { list-style: none; margin-top: var(--space-6); }
 .segment-list li {
   font-size: var(--font-size-sm);
@@ -574,7 +574,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   font-weight: 500;
   line-height: 1.6;
 }
-.detail-block p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; }
+.detail-block p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; max-width: 50em; } /* 50em=700px/50字。広い画面で列幅なりに伸びるのを抑える（2026-08-21実測65字） */
 
 /* 進め方（プロセス） */
 .process-grid {
@@ -653,14 +653,14 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   color: var(--color-text-tertiary);
   line-height: 1.9;
 }
-.plan-notes { margin-top: var(--space-8); max-width: 44em; }
+.plan-notes { margin-top: var(--space-8); max-width: 38em; } /* =608px。中身12pxで50字（44emは72字で広すぎた）2026-08-21実測 */
 .plan-notes p {
   font-size: var(--font-size-xs);
   color: var(--color-text-tertiary);
   line-height: 1.9;
   margin-top: var(--space-3);
 }
-.subsidy-body { max-width: 44em; }
+.subsidy-body { max-width: 44em; } /* =704px。中身14pxで50字（コンテナのemは16px基準）2026-08-21実測 */
 .subsidy-body p {
   margin-top: var(--space-6);
   font-size: var(--font-size-sm);
@@ -671,7 +671,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 
 /* CTAバンド */
 .cta-band { text-align: left; }
-.cta-band .cta-inner { max-width: 40em; }
+.cta-band .cta-inner { max-width: 44em; } /* =704px。中身14pxで50字 2026-08-21実測 */
 .cta-band p { margin-top: var(--space-6); font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 2.1; }
 .cta-band .btn { margin-top: var(--space-8); }
 
@@ -767,7 +767,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 a.submit-btn { text-decoration: none; }
 
 /* ── Policy（プライバシーポリシー等の文章ページ） ── */
-.policy-body { max-width: 44em; }
+.policy-body { max-width: 50em; } /* 44em→50em(2026-08-21)＝800px/50字(16px系) */
 .policy-body h2 {
   font-family: var(--font-serif-jp);
   font-size: var(--font-size-xl);
@@ -780,7 +780,7 @@ a.submit-btn { text-decoration: none; }
 .policy-date { margin-top: var(--space-9); color: var(--color-text-tertiary); }
 
 /* ── FAQ ── */
-.faq-list { margin-top: var(--space-8); max-width: 46em; }
+.faq-list { margin-top: var(--space-8); max-width: 50em; } /* 46em→50em(2026-08-21)＝800px/50字(16px系) */
 .faq-item { padding: var(--space-6) 0; border-bottom: 1px solid var(--color-border-hairline); }
 .faq-item:first-child { border-top: 1px solid var(--color-border-hairline); }
 .faq-q { font-family: var(--font-serif-jp); font-size: var(--font-size-lg); font-weight: 500; }
