@@ -843,6 +843,12 @@ a.submit-btn { text-decoration: none; }
 @media (min-width: 961px) {
   br.sp { display: none; }
 }
+/* PC専用の改行・結合（検品ツールの【PC・…】指示の受け皿。960px以下では完全に無効＝スマホ非干渉） */
+br.pc, wbr.pc { display: none; }
+@media (min-width: 961px) {
+  br.pc, wbr.pc { display: inline; }
+  .nowrap-pc { white-space: nowrap; }
+}
 
 /* メニュー展開中は背景スクロールをロック */
 body.menu-open { overflow: hidden; }
