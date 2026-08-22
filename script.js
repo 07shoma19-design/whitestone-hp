@@ -52,7 +52,7 @@ function countUp(el) {
   const finalText = node.textContent;
   const num = parseInt(finalText.replace(/[^0-9]/g, ''), 10);
   if (!Number.isFinite(num) || num === 0) return;
-  const dur = 900;
+  const dur = 1800;
   const start = performance.now();
   const ease = t => 1 - Math.pow(1 - t, 3);
   const step = (now) => {
@@ -66,13 +66,21 @@ function countUp(el) {
 
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
+    // 同時に画面へ入った要素は80msずつずらして出す＝「順に現れる」ので動きが認識できる（2026-08-22）
+    let order = 0;
     entries.forEach(e => {
       if (!e.isIntersecting) return;
+      const delay = Math.min(order++, 5) * 80;
+      if (delay && !reducedMotion) {
+        e.target.style.transitionDelay = delay + 'ms';
+        setTimeout(() => { e.target.style.transitionDelay = ''; }, delay + 1200);
+      }
       e.target.classList.add('is-visible');
-      if (e.target.classList.contains('fact-value')) countUp(e.target);
+      if (e.target.classList.contains('fact-value')) setTimeout(() => countUp(e.target), delay);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.12 });
+    // rootMarginで画面下端より内側に入ってから発火させる＝視線が届く前に終わるのを防ぐ
+  }, { threshold: 0.12, rootMargin: '0px 0px -12% 0px' });
   document.querySelectorAll('.reveal, .section-label, .fact-value').forEach(el => io.observe(el));
 } else {
   document.querySelectorAll('.reveal, .section-label').forEach(el => el.classList.add('is-visible'));

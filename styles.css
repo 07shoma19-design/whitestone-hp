@@ -59,6 +59,8 @@
   --motion-fast: 300ms;
   --motion-normal: 600ms;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-reveal: cubic-bezier(0.33, 0, 0.2, 1); /* 動き出しをゆるめ、動いている時間を体感させる（2026-08-22） */
+  --motion-slow: 900ms;
 }
 
 /* ── Reset ── */
@@ -430,7 +432,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   transform-origin: left center;
 }
 /* ビューポートに入ったら罫線が左からスッと伸びる（script.jsがis-visibleを付与） */
-.js .section-label::before { transform: scaleX(0); transition: transform 0.7s var(--ease) 0.1s; }
+.js .section-label::before { transform: scaleX(0); transition: transform 1.1s var(--ease-reveal) 0.15s; }
 .js .section-label.is-visible::before { transform: scaleX(1); }
 .section h2 {
   font-family: var(--font-serif-jp);
@@ -828,7 +830,7 @@ a.submit-btn { text-decoration: none; }
 /* ── Reveal animation ──
    .jsクラスはscript.jsが付与する。JS無効・読込失敗時はこのブロックが
    適用されず、全コンテンツが最初から表示される（単一障害点の回避） */
-.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--motion-normal) var(--ease), transform var(--motion-normal) var(--ease); }
+.js .reveal { opacity: 0; transform: translateY(32px); transition: opacity var(--motion-slow) var(--ease-reveal), transform var(--motion-slow) var(--ease-reveal); }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
