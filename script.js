@@ -76,14 +76,33 @@ if ('IntersectionObserver' in window) {
         setTimeout(() => { e.target.style.transitionDelay = ''; }, delay + 1200);
       }
       e.target.classList.add('is-visible');
-      if (e.target.classList.contains('fact-value')) setTimeout(() => countUp(e.target), delay);
+      if (e.target.classList.contains('fact-value') || e.target.classList.contains('num')) {
+        setTimeout(() => countUp(e.target), delay + 150);
+      }
       io.unobserve(e.target);
     });
     // rootMarginで画面下端より内側に入ってから発火させる＝視線が届く前に終わるのを防ぐ
   }, { threshold: 0.12, rootMargin: '0px 0px -12% 0px' });
-  document.querySelectorAll('.reveal, .section-label, .fact-value').forEach(el => io.observe(el));
+  const targets = ['.reveal', '.section-label', '.fact-value'];
+  // web.html限定の演出対象（罫線の伸長・番号の立ち上がり・価格カウント）
+  if (document.body.classList.contains('page-web')) {
+    targets.push('.plan', '.detail-block', '.process-step', '.subsidy-body p', '.plan-price .num');
+  }
+  document.querySelectorAll(targets.join(', ')).forEach(el => io.observe(el));
 } else {
-  document.querySelectorAll('.reveal, .section-label').forEach(el => el.classList.add('is-visible'));
+  document.querySelectorAll('.reveal, .section-label, .plan, .detail-block, .process-step, .subsidy-body p').forEach(el => el.classList.add('is-visible'));
+}
+
+// スクロール進捗バー（web.htmlのみ。要素が無いページでは何もしない）
+const progress = document.getElementById('scrollProgress');
+if (progress) {
+  const updateProgress = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+  updateProgress();
 }
 
 // メールアドレスのコピー（PCでメーラー未設定でも連絡先を取得できるように）
