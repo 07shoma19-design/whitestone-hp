@@ -917,6 +917,54 @@ a.submit-btn { text-decoration: none; }
   .page-web .page-hero-media { top: -10%; bottom: -10%; transform: translateY(var(--parallax, 0px)); will-change: transform; }
 }
 
+
+/* ⑫ FAQのアコーディオン（web.html限定・2026-08-23 壮真「一旦入れてみて／抜く可能性あり」）
+   閉じていてもテキストはDOMに残る（display:noneを使わない）ので検索・AIには読まれる。
+   JS無効時はこのブロックが効かず全問展開のまま＝情報が隠れない */
+.js .page-web .faq-q { margin: 0; }
+.js .page-web .faq-q::before { content: none; }
+.js .page-web .faq-toggle {
+  display: flex; align-items: flex-start; gap: var(--space-5);
+  width: 100%; max-width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--font-serif-jp); font-size: var(--font-size-lg); font-weight: 500;
+  line-height: 1.6; color: var(--color-text-primary); text-align: left;
+  transition: color var(--motion-fast) var(--ease);
+}
+.js .page-web .faq-toggle::before { content: "Q．"; color: var(--color-accent); flex: none; }
+.js .page-web .faq-toggle:hover { color: var(--color-accent); }
+.js .page-web .faq-q-text { flex: 1; min-width: 0; } /* min-width:autoだとkeep-allの長い塊が幅を押し広げる（375pxで16pxはみ出した・2026-08-23実測） */
+/* ＋／− のマーク（線2本をtransformで切り替える） */
+.js .page-web .faq-mark { position: relative; flex: none; width: 14px; height: 14px; margin-top: 0.45em; }
+.js .page-web .faq-mark::before,
+.js .page-web .faq-mark::after {
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: 14px; height: 1px; background: var(--color-border-strong);
+  transition: transform 0.4s var(--ease-reveal);
+}
+.js .page-web .faq-mark::after { transform: rotate(90deg); }
+.js .page-web .faq-item.is-open .faq-mark::after { transform: rotate(0deg); }
+
+/* 開閉は max-height 方式。grid-template-rows の 0fr→1fr は、コンテナ高さがautoのとき
+   遷移後も0に解決されて開かないことがあった（2026-08-23実測）。高さはJSが実測値を入れる */
+.js .page-web .faq-a-wrap {
+  overflow: hidden; max-height: 0; margin-top: 0;
+  transition: max-height 0.5s var(--ease-reveal), margin-top 0.5s var(--ease-reveal);
+}
+.js .page-web .faq-a-wrap .faq-a { margin-top: 0; }
+.js .page-web .faq-item.is-open .faq-a-wrap { margin-top: var(--space-4); }
+
+/* 極小幅（360px以下）ではアコーディオンを使わず全問展開のままにする。
+   開閉マーク分の幅がテキスト領域を圧迫して横はみ出しを起こすため（2026-08-23実測で320pxが悪化）。
+   この幅では一覧性より「確実に読めること」を優先する */
+@media (max-width: 360px) {
+  .js .page-web .faq-a-wrap { max-height: none !important; margin-top: var(--space-4); }
+  .js .page-web .faq-mark { display: none; }
+  /* flexだと「Q．」が独立カラムになりテキスト領域が約52px減って溢れる。
+     この幅では通常の行内表示に戻し、h3時代と同じ幅を本文に使わせる */
+  .js .page-web .faq-toggle { display: block; cursor: default; }
+  .js .page-web .faq-q-text { display: inline; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js .page-web .seq { opacity: 1; transform: none; animation: none; }
   .js .page-web .plan-price::after,
@@ -931,6 +979,7 @@ a.submit-btn { text-decoration: none; }
   .js .page-web .plan-list li::before { transform: scaleX(1); transition: none; }
   .js .page-web .section h2.reveal { transform: none; }
   .js .page-web .page-hero-media { transform: none; }
+  .js .page-web .faq-a-wrap, .js .page-web .faq-mark::before, .js .page-web .faq-mark::after { transition: none; }
   .page-web .scroll-progress { display: none; }
 }
 

@@ -94,6 +94,31 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.reveal, .section-label, .plan, .detail-block, .process-step, .subsidy-body p').forEach(el => el.classList.add('is-visible'));
 }
 
+// FAQのアコーディオン（web.htmlのみ。要素が無ければ何もしない）
+const faqItems = [...document.querySelectorAll('.faq-item')];
+if (faqItems.length && document.querySelector('.faq-toggle')) {
+  // 開いている項目には実測の高さを入れる（max-heightに固定値を使うと閉じる動きが鈍るため）
+  const syncFaq = (item) => {
+    const wrap = item.querySelector('.faq-a-wrap');
+    if (!wrap) return;
+    wrap.style.maxHeight = item.classList.contains('is-open') ? wrap.scrollHeight + 'px' : '0px';
+  };
+  faqItems.forEach(syncFaq);
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      syncFaq(item);
+    });
+  });
+  // 幅が変わると行数が変わるので開いている項目を測り直す
+  window.addEventListener('resize', () => {
+    faqItems.forEach(item => { if (item.classList.contains('is-open')) syncFaq(item); });
+  }, { passive: true });
+}
+
 // ヒーロー写真のスクロール連動（web.htmlのPC幅のみ。rAFで間引き・reduced-motion時は動かさない）
 if (document.body.classList.contains('page-web') && !reducedMotion) {
   const heroMedia = document.querySelector('.page-hero-media');
