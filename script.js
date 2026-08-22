@@ -94,6 +94,30 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.reveal, .section-label, .plan, .detail-block, .process-step, .subsidy-body p').forEach(el => el.classList.add('is-visible'));
 }
 
+// ヒーロー写真のスクロール連動（web.htmlのPC幅のみ。rAFで間引き・reduced-motion時は動かさない）
+if (document.body.classList.contains('page-web') && !reducedMotion) {
+  const heroMedia = document.querySelector('.page-hero-media');
+  const pcWidth = window.matchMedia('(min-width: 961px)');
+  if (heroMedia) {
+    let ticking = false;
+    const updateParallax = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        if (pcWidth.matches) {
+          heroMedia.style.setProperty('--parallax', Math.min(window.scrollY, 900) * 0.12 + 'px');
+        } else {
+          heroMedia.style.removeProperty('--parallax');
+        }
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    pcWidth.addEventListener('change', updateParallax);
+    updateParallax();
+  }
+}
+
 // スクロール進捗バー（web.htmlのみ。要素が無いページでは何もしない）
 const progress = document.getElementById('scrollProgress');
 if (progress) {
