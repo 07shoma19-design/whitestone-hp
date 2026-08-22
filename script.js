@@ -76,7 +76,8 @@ if ('IntersectionObserver' in window) {
         setTimeout(() => { e.target.style.transitionDelay = ''; }, delay + 1200);
       }
       e.target.classList.add('is-visible');
-      if (e.target.classList.contains('fact-value') || e.target.classList.contains('num')) {
+      // 価格（.plan-price .num）はカウントしない＝最も早く知りたい情報を待たせないため（2026-08-22 壮真判断）
+      if (e.target.classList.contains('fact-value')) {
         setTimeout(() => countUp(e.target), delay + 150);
       }
       io.unobserve(e.target);
@@ -86,7 +87,7 @@ if ('IntersectionObserver' in window) {
   const targets = ['.reveal', '.section-label', '.fact-value'];
   // web.html限定の演出対象（罫線の伸長・番号の立ち上がり・価格カウント）
   if (document.body.classList.contains('page-web')) {
-    targets.push('.plan', '.detail-block', '.process-step', '.subsidy-body p', '.plan-price .num');
+    targets.push('.plan', '.detail-block', '.process-step', '.subsidy-body p');
   }
   document.querySelectorAll(targets.join(', ')).forEach(el => io.observe(el));
 } else {
