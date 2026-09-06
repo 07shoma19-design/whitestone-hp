@@ -696,6 +696,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 }
 /* 3事業リンク（4事業化後の下層ページ用）。基底の1fr 1frより後に置く＝後勝ちで有効化 */
 .other-biz--3 { grid-template-columns: repeat(3, 1fr); }
+.other-biz--1 { grid-template-columns: 1fr; }
 
 /* ── Company ── */
 .company-grid {
