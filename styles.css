@@ -322,6 +322,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 .page-hero--photo > :not(.page-hero-media) { position: relative; max-width: 55%; }
 .page-hero--jinzai { --hero-photo: url("img/hero-jinzai.jpg"); }
 .page-hero--eigyo { --hero-photo: url("img/hero-eigyo.jpg"); }
+.page-hero--ai { --hero-photo: url("img/hero-eigyo.jpg"); }
 .page-hero--hoken { --hero-photo: url("img/hero-hoken.jpg"); }
 .page-hero--web { --hero-photo: url("img/band-marble.jpg"); }
 .breadcrumb {
@@ -557,6 +558,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   line-height: 1.9;
 }
 .segment .more-link { margin-top: var(--space-6); }
+.section > .more-link { margin-top: var(--space-8); }
 
 /* ================================================================
    下層ページ用コンポーネント
