@@ -1089,6 +1089,14 @@ body.menu-open { overflow: hidden; }
   .page-hero { padding-top: calc(92px + var(--space-8)); }
   .company-table th { width: 7.5em; }
   footer.site-footer { flex-direction: column; align-items: flex-start; }
+  /* ai.htmlのCTA見出し「まず、ひとつだけ教えてください。」が clamp下限28pxで3行に割れる（375px実測）。
+     モバイル幅のみ24pxへ縮小し2行に戻す。960px超はheading clampの通常スケールに任せる */
+  #cta-question { font-size: 24px; }
+  /* 375px実測で孤立行・意図外の折り返しが出た3箇所。モバイル幅のみ縮小して行数を設計意図に戻す。
+     .faq-a/.page-leadは非clampの固定値なので960px超は通常サイズ（16px/14px）に自動で戻る */
+  #faq-a-monthly { font-size: 15.5px; }
+  #ai-lead { font-size: 13.5px; }
+  #faq-a-cost { font-size: 15.5px; }
 }
 
 /* 極小幅：会社概要テーブルは見出しを上に積む（値の折り返し幅を確保） */
