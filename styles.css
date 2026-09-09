@@ -1040,7 +1040,13 @@ a.submit-btn { text-decoration: none; }
    細切れになり右に余白が空くため、961px以上では無効化して自然折り返しに戻す。
    見出し（h1/h2）のbrは共通＝両方で維持。960px以下の表示はこの規則の影響を受けない */
 @media (min-width: 961px) {
-  br.sp { display: none; }
+  br.sp, wbr.sp { display: none; }
+}
+/* スマホ専用の「改行してよい」「つなぐ」（2026-09-09追加）。
+   これが無かったので、スマホだけの指示もクラス無しの <wbr> / .nowrap で実装するしかなく、
+   PCにも同じ改行が入っていた（壮真「分けて依頼したのに両方同じ修正がされている」の原因） */
+@media (max-width: 960px) {
+  .nowrap-sp { white-space: nowrap; }
 }
 /* PC専用の改行・結合（検品ツールの【PC・…】指示の受け皿。960px以下では完全に無効＝スマホ非干渉） */
 br.pc, wbr.pc { display: none; }
