@@ -427,6 +427,7 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: var(--space-9);
+  word-break: keep-all; /* 「03　お問い合わせ」が語の途中（お問い合/わせ）で割れた（2026-09-29 320px実測）＝全角スペースの後ろでだけ割る */
 }
 .section-label::before {
   content: ""; width: 40px; height: 1px; background: var(--color-border-strong);
@@ -1083,6 +1084,9 @@ body.menu-open { overflow: hidden; }
   .site-nav { display: none; }
   .menu-toggle { display: block; }
   .hero-grid { grid-template-columns: 1fr; gap: var(--space-7); width: 100%; }
+  /* h1の「Whitestoneと共に、」は割れない1かたまり＝34pxで339px。320pxで画面からはみ出し375pxでも余白に食い込んだ（2026-09-29実測）。
+     スマホ層だけ画面幅の8.4%を上限にして可用幅に収める（320px→26.9px・375px→31.5px）。PC層はdisplay clampのまま */
+  .hero h1 { font-size: min(var(--font-size-display), 8.4vw); }
   .hero-scroll { display: none; }
   .hero-media {
     position: relative; width: calc(100% + 2 * var(--gutter)); height: 34vh;
