@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI勉強会 持ち帰りページ｜Whitestone株式会社</title>
+<meta name="description" content="AI勉強会にご参加いただいた方の持ち帰りページ。配布資料のダウンロード、3問の感想、30分の無料相談のお申し込み。">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Whitestone株式会社">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="AI勉強会 持ち帰りページ｜Whitestone株式会社">
+<meta property="og:description" content="AI勉強会の持ち帰りページ。配布資料・感想・30分の無料相談。">
+<meta property="og:image" content="https://whitestone-inc.co.jp/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="https://whitestone-inc.co.jp/favicon.svg">
+<link rel="apple-touch-icon" href="https://whitestone-inc.co.jp/apple-touch-icon.png">
+<style>
+:root{
+  --surface:#ffffff; --surface-strong:#f2f3f4; --cta:#1c1c1c;
+  --line:#1c1c1c; --hair:#e2e4e5; --accent:#45494c;
+  --text:#1c1c1c; --text-sub:#5d6164;
+  --serif:"Shippori Mincho","Yu Mincho","Hiragino Mincho ProN",serif;
+  --sans:"YuGothic","Yu Gothic","ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--surface);color:var(--text);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.9;line-break:strict;overflow-wrap:break-word}
+.nw{display:inline-block}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--hair);padding:14px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wordmark{display:block;width:128px;height:50px}
+.wordmark svg{display:block;width:100%;height:100%}
+.wordmark .lockup-box{fill:#fff;stroke:var(--text);transition:stroke .25s}
+.wordmark .lockup-text{fill:var(--text);transition:fill .25s}
+.wordmark:hover .lockup-box{stroke:var(--accent)}
+.wordmark:hover .lockup-text{fill:var(--accent)}
+.hdr-note{font-size:12px;color:var(--text-sub)}
+.label{display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
+.label::before{content:"";width:40px;border-top:1px solid var(--line)}
+section{padding:72px 0;border-bottom:1px solid var(--hair)}
+section.alt{background:var(--surface-strong)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.5;margin:0 0 20px}
+h1{font-size:clamp(28px,6.4vw,48px)}
+h2{font-size:clamp(22px,4.6vw,32px)}
+h3{font-size:18px}
+p{margin:0 0 16px}
+.lead{font-size:17px}
+.chip{display:inline-block;border:1px solid var(--line);padding:3px 12px;font-size:13px;margin-bottom:24px;background:var(--surface)}
+.btn{display:inline-block;background:var(--cta);color:#fff;text-decoration:none;padding:16px 36px;font-size:16px;margin-top:8px;min-height:48px}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.sub{font-size:13px;color:var(--text-sub)}
+a.tx{color:inherit;text-underline-offset:3px}
+.price-box{border:1px solid var(--line);padding:32px 24px;background:var(--surface)}
+.price{font-family:var(--serif);font-size:clamp(40px,10vw,60px);line-height:1.2;display:block;margin-bottom:8px}
+.price small{font-size:.35em;margin-left:4px}
+.promise{border:1px solid var(--line);background:var(--surface);padding:20px 24px;margin-top:28px}
+.promise p{margin:0}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:14px 0;border-top:1px solid var(--hair)}
+ul.plain li:last-child{border-bottom:1px solid var(--hair)}
+.grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:761px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid var(--hair);padding:24px;background:var(--surface)}
+.card .no{font-family:"Playfair Display",var(--serif);color:var(--accent);font-size:14px;letter-spacing:.1em;display:block;margin-bottom:8px}
+.card h3{margin-bottom:12px}
+.scope .card ul.plain li{padding:12px 0;font-size:15px}
+.mark{font-family:var(--serif);font-size:15px;display:block;margin-bottom:8px}
+/* サンプル画面 */
+.sample{display:grid;grid-template-columns:1fr;gap:12px;align-items:stretch;margin-top:24px}
+@media(min-width:761px){.sample{grid-template-columns:1fr 40px 1fr}}
+.pane{border:1px solid var(--line);background:var(--surface)}
+.pane-hd{border-bottom:1px solid var(--hair);padding:10px 16px;font-size:13px;color:var(--text-sub);display:flex;justify-content:space-between;gap:8px}
+.pane-bd{padding:16px;font-size:14px;line-height:1.8}
+.pane-bd p{margin:0 0 8px}
+.pane-bd p:last-child{margin:0}
+.arrow{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--accent)}
+@media(max-width:760px){.arrow{transform:rotate(90deg);height:28px}}
+.memo{font-size:14px;color:var(--text-sub)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 8px;border-top:1px solid var(--hair);vertical-align:top}
+th{width:30%;font-weight:400;color:var(--text-sub)}
+details{border-top:1px solid var(--hair);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--hair)}
+summary{cursor:pointer;font-weight:400;min-height:32px}
+summary:focus-visible{outline:3px solid var(--accent)}
+footer{background:var(--surface-strong);padding:40px 0;font-size:13px;color:var(--text-sub)}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:20px}
+.btn{transition:background .25s,transform .25s,box-shadow .25s}
+.btn:hover{background:#45494c;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.card{transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08);border-color:var(--accent)}
+summary{transition:color .25s}
+summary:hover{color:var(--accent)}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+section:first-of-type .wrap>*,header{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+section:first-of-type .wrap>*:nth-child(2){animation-delay:.12s}
+section:first-of-type .wrap>*:nth-child(3){animation-delay:.24s}
+section:first-of-type .wrap>*:nth-child(4){animation-delay:.36s}
+section:first-of-type .wrap>*:nth-child(n+5){animation-delay:.48s}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+/* 見本画面の窓枠 */
+.sample-bar{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;background:#f4f4f2;font-size:12px;color:var(--text-sub);margin-top:20px}
+.sample-bar i{width:9px;height:9px;border-radius:50%;background:#d6d6d2;display:inline-block}
+.sample-bar b{margin-left:8px;font-weight:400}
+.sample-bar+.sample{margin-top:0}
+</style>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="https://whitestone-inc.co.jp/" aria-label="Whitestone ホーム"><svg viewBox="0 0 1000 391.14" aria-hidden="true" focusable="false"><rect class="lockup-box" x="4" y="4" width="992" height="383.14" stroke-width="8"/><text class="lockup-text" x="500" y="331.6" text-anchor="middle" font-family="'Playfair Display','Shippori Mincho','Yu Mincho','Hiragino Mincho ProN',serif" font-weight="400" font-size="174.8">Whitestone</text></svg></a>
+    <span class="hdr-note">AI勉強会 持ち帰りページ</span>
+  </div>
+</header>
+
+<main>
+
+<!-- お礼 -->
+<section>
+  <div class="wrap">
+    <span class="chip">AI勉強会にご参加の方へ</span>
+    <h1><span class="nw">ご参加いただき、</span><span class="nw">ありがとうございました。</span></h1>
+    <p class="lead">このページは、勉強会の持ち帰り用です。今日の資料と、そのあとの入口をまとめています。</p>
+    <ul class="plain">
+      <li><a class="tx" href="#files">1. 資料を持ち帰る</a></li>
+      <li><a class="tx" href="#survey">2. 3問だけ、感想を聞かせてください（1分）</a></li>
+      <li><a class="tx" href="#consult">3. 30分の無料相談</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 資料 -->
+<section class="alt" id="files">
+  <div class="wrap">
+    <p class="label">Files</p>
+    <h2>資料を持ち帰る</h2>
+    <p>勉強会で使った資料です。社内で回していただいて構いません。</p>
+    <div class="grid c2">
+      <div class="card">
+        <span class="no">01</span>
+        <h3>配布資料（1枚）</h3>
+        <p class="memo">AIを使い始めるときの、最初の1歩のまとめ。印刷して机に置ける1枚です。</p>
+        <a class="btn" href="files/ai-study_haifu.pdf">PDFを開く</a>
+      </div>
+      <div class="card">
+        <span class="no">02</span>
+        <h3>当日のスライド</h3>
+        <p class="memo">勉強会で映したスライドの全ページです。</p>
+        <a class="btn" href="files/ai-study_slides.pdf">PDFを開く</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 感想 -->
+<section id="survey">
+  <div class="wrap">
+    <p class="label">Survey</p>
+    <h2><span class="nw">3問だけ、</span><span class="nw">感想を聞かせてください</span></h2>
+    <p>次の勉強会をよくするために、3つの質問に答えていただけると助かります。所要1分、お名前は書かなくて構いません。</p>
+    <a class="btn" href="https://docs.google.com/forms/d/10DYFn5BlOYJT56l8ya5OeYPO2zQnHUDuazRxPR8JsbU/viewform">感想を送る（1分）</a>
+  </div>
+</section>
+
+<!-- 相談 -->
+<section class="alt" id="consult">
+  <div class="wrap">
+    <p class="label">Consultation</p>
+    <h2>30分の無料相談</h2>
+    <p class="lead">「自社の業務でAIをどう使うか」を、オンラインの30分で整理します。</p>
+    <div class="promise" style="margin-top:8px;margin-bottom:24px">
+      <p><span class="mark">この30分で決まること</span>どの業務から始めるかを1つに絞り、次の進め方を「自分でやる／1つの業務だけ頼む／社外AI担当に頼む」の中から整理します。</p>
+    </div>
+    <ul class="plain">
+      <li>費用はかかりません。</li>
+      <li>必要な方には、有料の支援もご案内します。先にお伝えしておきます。</li>
+      <li>売り込みの電話はしません。ご連絡はメールだけです。</li>
+      <li>上の感想（3問）に答えていなくても、相談だけで申し込めます。</li>
+    </ul>
+    <a class="btn" href="https://docs.google.com/forms/d/19oobIRaTkM8nuipOxIsQztn5gRLjQlYOUXTmEj2Xlog/viewform" style="margin-top:24px">30分の相談を申し込む</a>
+    <p style="margin-top:20px">メールでも受け付けています。会社名・お名前・相談したい業務を1つ・ご都合のよい時間帯を添えてお送りください。<br><span class="sub">宛先：<a class="tx" href="mailto:info@whitestone-inc.co.jp?subject=%E3%80%8CAI%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%80%8D30%E5%88%86%E7%9B%B8%E8%AB%87%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF">info@whitestone-inc.co.jp</a></span></p>
+    <p class="sub">お申し込みには2営業日以内に日程のご連絡をお送りします。<br>お預かりした情報は、ご相談のご連絡にのみ使います（<a class="tx" href="https://whitestone-inc.co.jp/privacy.html">個人情報保護方針</a>）。</p>
+  </div>
+</section>
+
+<!-- そのあとの選択肢 -->
+<section>
+  <div class="wrap">
+    <p class="label">Next</p>
+    <h2>そのあとの選択肢</h2>
+    <p class="memo">相談のあとに選べる進め方です。相談の前に読まなくて構いません。</p>
+    <ul class="plain">
+      <li><a class="tx" href="https://whitestone-inc.co.jp/ai-monitor.html">1つの業務から試す</a><br><span class="sub">毎週の「あの作業」を1つ、動くAIの道具にします。</span></li>
+      <li><a class="tx" href="https://whitestone-inc.co.jp/ai-tantou.html">社外AI担当</a><br><span class="sub">社内にAIの担当者がいなくても、Whitestoneが社外の担当として業務に入ります。</span></li>
+    </ul>
+    <p class="sub" style="margin-top:20px">2026年10月時点の内容です。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <table>
+      <tr><th>会社名</th><td>Whitestone株式会社</td></tr>
+      <tr><th>所在地</th><td>〒640-0416 和歌山県紀の川市貴志川町長山１２２－３</td></tr>
+      <tr><th>お問い合わせ</th><td><a class="tx" href="mailto:info@whitestone-inc.co.jp">info@whitestone-inc.co.jp</a>（2営業日以内にご返信します）</td></tr>
+    </table>
+    <div class="foot-links">
+      <a class="tx" href="https://whitestone-inc.co.jp/">会社サイト</a>
+      <a class="tx" href="https://whitestone-inc.co.jp/ai.html">AI活用支援</a>
+      <a class="tx" href="https://whitestone-inc.co.jp/privacy.html">個人情報保護方針</a>
+    </div>
+    <p style="margin-top:20px">© Whitestone Inc.</p>
+  </div>
+</footer>
+
+<script>
+(function(){var d=document.documentElement;if(!('IntersectionObserver' in window))return;d.classList.add('js');
+var els=document.querySelectorAll('section:not(:first-of-type) .wrap>*,.card');
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+els.forEach(function(el){el.classList.add('rv');io.observe(el)});})();
+</script>
+</body>
+</html>
