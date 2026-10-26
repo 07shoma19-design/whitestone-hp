@@ -112,6 +112,12 @@ section:first-of-type .wrap>*:nth-child(n+5){animation-delay:.48s}
 .sample-bar i{width:9px;height:9px;border-radius:50%;background:#d6d6d2;display:inline-block}
 .sample-bar b{margin-left:8px;font-weight:400}
 .sample-bar+.sample{margin-top:0}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:10px 20px calc(10px + env(safe-area-inset-bottom))}
+.sticky-cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0}
+.sticky-cta .sc-txt{font-size:13px;line-height:1.5;color:var(--text-sub)}
+.sticky-cta .btn{margin:0;padding:12px 28px;white-space:nowrap}
+body{padding-bottom:76px}
+@media(max-width:560px){.sticky-cta .sc-txt{display:none}.sticky-cta .btn{width:100%;text-align:center}}
 </style>
 <body>
 
@@ -223,6 +229,8 @@ section:first-of-type .wrap>*:nth-child(n+5){animation-delay:.48s}
     <p style="margin-top:20px">© Whitestone Inc.</p>
   </div>
 </footer>
+
+<div class="sticky-cta" role="complementary" aria-label="相談の申し込み"><div class="wrap"><span class="sc-txt">30分の無料相談 ／ 費用なし・売り込みの電話なし</span><a class="btn" href="#consult">相談を申し込む</a></div></div>
 
 <script>
 (function(){var d=document.documentElement;if(!('IntersectionObserver' in window))return;d.classList.add('js');
