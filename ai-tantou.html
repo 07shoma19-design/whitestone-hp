@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>社外AI担当｜Whitestone株式会社</title>
+<meta name="description" content="社内にAIの担当者がいない会社に、Whitestoneが社外のAI担当として入ります。業務の流れを見て、手間の大きい順に動く道具へ置き換え、社内で回せる形にしてお渡しします。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Whitestone株式会社">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="社外AI担当｜Whitestone株式会社">
+<meta property="og:description" content="社内にAIの担当者がいなくても。業務に入り込み、手間の大きい順に動く道具へ置き換えて、社内で回せる形でお渡しします。">
+<meta property="og:image" content="https://whitestone-inc.co.jp/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="https://whitestone-inc.co.jp/favicon.svg">
+<link rel="apple-touch-icon" href="https://whitestone-inc.co.jp/apple-touch-icon.png">
+<style>
+:root{
+  --surface:#ffffff; --surface-strong:#f2f3f4; --cta:#1c1c1c;
+  --line:#1c1c1c; --hair:#e2e4e5; --accent:#45494c;
+  --text:#1c1c1c; --text-sub:#5d6164;
+  --serif:"Shippori Mincho","Yu Mincho","Hiragino Mincho ProN",serif;
+  --sans:"YuGothic","Yu Gothic","ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--surface);color:var(--text);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.9;line-break:strict;overflow-wrap:break-word}
+.nw{display:inline-block}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--hair);padding:14px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wordmark{display:block;width:128px;height:50px}
+.wordmark svg{display:block;width:100%;height:100%}
+.wordmark .lockup-box{fill:#fff;stroke:var(--text);transition:stroke .25s}
+.wordmark .lockup-text{fill:var(--text);transition:fill .25s}
+.wordmark:hover .lockup-box{stroke:var(--accent)}
+.wordmark:hover .lockup-text{fill:var(--accent)}
+.hdr-note{font-size:12px;color:var(--text-sub)}
+.label{display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
+.label::before{content:"";width:40px;border-top:1px solid var(--line)}
+section{padding:72px 0;border-bottom:1px solid var(--hair)}
+section.alt{background:var(--surface-strong)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.5;margin:0 0 20px}
+h1{font-size:clamp(28px,6.4vw,48px)}
+h2{font-size:clamp(22px,4.6vw,32px)}
+h3{font-size:18px}
+p{margin:0 0 16px}
+.lead{font-size:17px}
+.chip{display:inline-block;border:1px solid var(--line);padding:3px 12px;font-size:13px;margin-bottom:24px;background:var(--surface)}
+.btn{display:inline-block;background:var(--cta);color:#fff;text-decoration:none;padding:16px 36px;font-size:16px;margin-top:8px;min-height:48px}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.sub{font-size:13px;color:var(--text-sub)}
+a.tx{color:inherit;text-underline-offset:3px}
+.price-box{border:1px solid var(--line);padding:32px 24px;background:var(--surface)}
+.price{font-family:var(--serif);font-size:clamp(40px,10vw,60px);line-height:1.2;display:block;margin-bottom:8px}
+.price small{font-size:.35em;margin-left:4px}
+.promise{border:1px solid var(--line);background:var(--surface);padding:20px 24px;margin-top:28px}
+.promise p{margin:0}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:14px 0;border-top:1px solid var(--hair)}
+ul.plain li:last-child{border-bottom:1px solid var(--hair)}
+.grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:761px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid var(--hair);padding:24px;background:var(--surface)}
+.card .no{font-family:"Playfair Display",var(--serif);color:var(--accent);font-size:14px;letter-spacing:.1em;display:block;margin-bottom:8px}
+.card h3{margin-bottom:12px}
+.scope .card ul.plain li{padding:12px 0;font-size:15px}
+.mark{font-family:var(--serif);font-size:15px;display:block;margin-bottom:8px}
+/* サンプル画面 */
+.sample{display:grid;grid-template-columns:1fr;gap:12px;align-items:stretch;margin-top:24px}
+@media(min-width:761px){.sample{grid-template-columns:1fr 40px 1fr}}
+.pane{border:1px solid var(--line);background:var(--surface)}
+.pane-hd{border-bottom:1px solid var(--hair);padding:10px 16px;font-size:13px;color:var(--text-sub);display:flex;justify-content:space-between;gap:8px}
+.pane-bd{padding:16px;font-size:14px;line-height:1.8}
+.pane-bd p{margin:0 0 8px}
+.pane-bd p:last-child{margin:0}
+.arrow{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--accent)}
+@media(max-width:760px){.arrow{transform:rotate(90deg);height:28px}}
+.memo{font-size:14px;color:var(--text-sub)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 8px;border-top:1px solid var(--hair);vertical-align:top}
+th{width:30%;font-weight:400;color:var(--text-sub)}
+details{border-top:1px solid var(--hair);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--hair)}
+summary{cursor:pointer;font-weight:400;min-height:32px}
+summary:focus-visible{outline:3px solid var(--accent)}
+footer{background:var(--surface-strong);padding:40px 0;font-size:13px;color:var(--text-sub)}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:20px}
+.btn{transition:background .25s,transform .25s,box-shadow .25s}
+.btn:hover{background:#45494c;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.card{transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08);border-color:var(--accent)}
+summary{transition:color .25s}
+summary:hover{color:var(--accent)}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+section:first-of-type .wrap>*,header{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+section:first-of-type .wrap>*:nth-child(2){animation-delay:.12s}
+section:first-of-type .wrap>*:nth-child(3){animation-delay:.24s}
+section:first-of-type .wrap>*:nth-child(4){animation-delay:.36s}
+section:first-of-type .wrap>*:nth-child(n+5){animation-delay:.48s}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+/* 追従する応募ボタン */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:10px 20px calc(10px + env(safe-area-inset-bottom))}
+.sticky-cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0}
+.sticky-cta .sc-txt{font-size:13px;line-height:1.5;color:var(--text-sub)}
+.sticky-cta .btn{margin:0;padding:12px 28px;white-space:nowrap}
+body{padding-bottom:76px}
+@media(max-width:560px){.sticky-cta .sc-txt{display:none}.sticky-cta .btn{width:100%;text-align:center}}
+/* 見本画面の窓枠 */
+.sample-bar{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;background:#f4f4f2;font-size:12px;color:var(--text-sub);margin-top:20px}
+.sample-bar i{width:9px;height:9px;border-radius:50%;background:#d6d6d2;display:inline-block}
+.sample-bar b{margin-left:8px;font-weight:400}
+.sample-bar+.sample{margin-top:0}
+</style>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="https://whitestone-inc.co.jp/" aria-label="Whitestone ホーム"><svg viewBox="0 0 1000 391.14" aria-hidden="true" focusable="false"><rect class="lockup-box" x="4" y="4" width="992" height="383.14" stroke-width="8"/><text class="lockup-text" x="500" y="331.6" text-anchor="middle" font-family="'Playfair Display','Shippori Mincho','Yu Mincho','Hiragino Mincho ProN',serif" font-weight="400" font-size="174.8">Whitestone</text></svg></a>
+    <span class="hdr-note">AI担当のいない会社に</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ヒーロー -->
+<section>
+  <div class="wrap">
+    <span class="chip">社外AI担当｜同時にお受けするのは2社まで</span>
+    <h1><span class="nw">社内にAIの担当者が</span><span class="nw">いなくても。</span></h1>
+    <p class="lead">Whitestoneが「社外のAI担当」として御社の業務に入ります。業務の流れを見せていただき、手間の大きいものから順に、いまお使いの表計算・メール・チャットの中で動く道具に置き換えていきます。</p>
+    <p class="lead">最後は、社内の担当の方がご自分で直せる状態にしてお渡しし、こちらは手を離します。ずっと外注に頼り続ける形にはしません。</p>
+    <a class="btn" href="#apply">30分の相談を申し込む</a>
+    <p class="sub" style="margin-top:16px">月198,000円（税込）／ 初月だけのお申し込みもできます<br>初月に決めた道具が仕上がらなければ、初月の費用はお返しします</p>
+  </div>
+</section>
+
+<!-- お困りごと -->
+<section class="alt">
+  <div class="wrap">
+    <p class="label">Problem</p>
+    <h2><span class="nw">「1つ直せば済む」</span><span class="nw">状態ではない会社へ</span></h2>
+    <ul class="plain">
+      <li>楽にしたい業務がいくつもあって、どこから手を付ければいいか決められない</li>
+      <li>同じ数字を、表計算・メール・別のシステムに何度も打ち直している</li>
+      <li>AIを試した社員はいるが、その人しか使えず、会社のやり方として残っていない</li>
+      <li>IT担当を1人雇うほどではないが、外注に丸投げして中身がわからなくなるのは避けたい</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 何をするか -->
+<section>
+  <div class="wrap">
+    <p class="label">What we do</p>
+    <h2><span class="nw">外から助言するのではなく、</span><span class="nw">中に入って仕上げます</span></h2>
+    <p>週に1回・30分の打ち合わせに加えて、御社が用意したアカウントで社内のチャットや共有フォルダに入り、実際の業務の流れを見ながら作ります。報告書を納めて終わりにはしません。</p>
+    <div class="grid c3" style="margin-top:24px">
+      <div class="card"><span class="no">01</span><h3>業務を見せていただく</h3><p class="sub" style="margin:0">画面を共有しながら、ふだんの業務を半日ほど見せていただきます。かかる時間と回数を書き出します。</p></div>
+      <div class="card"><span class="no">02</span><h3>置き換える順番を決める</h3><p class="sub" style="margin:0">手間が大きく、AIに向いているものから順に並べた「順番表」をお渡しします。</p></div>
+      <div class="card"><span class="no">03</span><h3>上から順に仕上げる</h3><p class="sub" style="margin:0">毎月1〜2本を目安に、いまお使いの道具の中で動く形にします。何を作るかは、大きさを見て毎月はじめに決めます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3か月の流れ -->
+<section class="alt">
+  <div class="wrap">
+    <p class="label">Timeline</p>
+    <h2><span class="nw">3か月で、</span><span class="nw">社内で回せる形に</span></h2>
+    <p>目安は3か月です。長く居座ることを前提にしていません。</p>
+    <div class="grid c3" style="margin-top:24px">
+      <div class="card"><span class="no">1か月目</span><h3>見る・決める・1つ作る</h3><p style="margin:0">業務の書き出しと順番表づくり。あわせて、すぐ効く小さな道具を1つ仕上げます。月末に、決められる方と報告会を行います。</p></div>
+      <div class="card"><span class="no">2か月目</span><h3>順に置き換える</h3><p style="margin:0">順番表の上から、月1〜2本を目安に動く形にします。つなぎ込みも含めてその月の作業に収まるかを毎月はじめに見積もり、収まらない分は着手前に別のお見積りをお出しします。</p></div>
+      <div class="card"><span class="no">3か月目</span><h3>引き継いで離れる</h3><p style="margin:0">文言の直しや項目の追加など、決めた範囲の直しを担当の方ができるよう、作り方をお伝えします。担当の方がご自分で1回直せたことを確かめてから、次に置き換える候補を残し、こちらの権限をすべて外します。3か月は目安で、届かなければ続けるかを月ごとにご相談します。</p></div>
+    </div>
+    <p class="sub" style="margin-top:20px">続けるかどうかは、毎月末に御社で決めていただけます。</p>
+  </div>
+</section>
+
+<!-- お渡しするもの -->
+<section>
+  <div class="wrap">
+    <p class="label">Included</p>
+    <h2>毎月お渡しするもの</h2>
+    <ul class="plain">
+      <li><strong style="font-weight:400">作業 月2日分（約16時間）</strong><br><span class="sub">打ち合わせ・チャットでのご質問への対応も含めて、この中で行います。</span></li>
+      <li><strong style="font-weight:400">週1回・30分の打ち合わせ（オンライン）</strong><br><span class="sub">進み具合の確認と、次に作るものの相談をします。</span></li>
+      <li><strong style="font-weight:400">社内チャットでのやりとり</strong><br><span class="sub">打ち合わせ以外の日も、社内のチャットで質問をお受けします（返信は2営業日以内）。</span></li>
+      <li><strong style="font-weight:400">道具ごとの使い方1枚と、設定の全文</strong><br><span class="sub">作ったものは、すべて御社のアカウントの中に置き、御社のものになります。</span></li>
+    </ul>
+    <div class="promise"><p>初月のはじめに「どの業務の道具を、どこまで動けば仕上がりとするか」を一緒に決めます。月末までにそこへ届かなかった場合は、初月の費用をお返しします。</p><p class="sub" style="margin-top:8px">御社の資料やアカウントのご用意が遅れた場合は、その分だけ判定の日を延ばします。</p></div>
+  </div>
+</section>
+
+<!-- 価格 -->
+<section class="alt">
+  <div class="wrap">
+    <p class="label">Price</p>
+    <h2>費用</h2>
+    <div class="price-box">
+      <span class="price">198,000<small>円（税込）／月</small></span>
+      <p style="margin:12px 0 0">初月だけのお申し込みもできます。2か月目からは月ごとのお申し込みで、続けるかは毎月末に決めていただけます。</p>
+      <p style="margin:12px 0 0">お支払い：毎月はじめに、その月の分をお振込みいただきます。</p>
+    </div>
+    <p class="sub" style="margin-top:16px">※ ChatGPTなどAIサービスや、お使いのシステムの利用料は含まれません（御社名義・御社のご負担です）。<br>※ 訪問は近畿圏であれば承ります（交通費は実費）。それ以外の地域はオンラインで行います。</p>
+    <p style="margin-top:24px">まず1つの業務だけ試したい場合は、半日で1つ形にする「<a class="tx" href="https://whitestone-inc.co.jp/ai-monitor.html">AI業務改善</a>」（49,800円・税込）からも始められます。</p>
+  </div>
+</section>
+
+<!-- 受けられる条件 -->
+<section class="scope">
+  <div class="wrap">
+    <p class="label">Scope</p>
+    <h2><span class="nw">お受けする</span><span class="nw">会社さまの条件</span></h2>
+    <p>中に入って仕上げる進め方のため、次の条件をお願いしています。同時にお受けするのは2社までです。</p>
+    <div class="grid c2" style="margin-top:24px">
+      <div class="card">
+        <span class="mark">お願いしたいこと</span>
+        <ul class="plain">
+          <li>社内に窓口の担当の方を1人立てていただく（ITに詳しくなくて大丈夫です。週1〜2時間ほどお時間をいただきます）</li>
+          <li>社長か、決められる方に、初月末の報告会へ出ていただく</li>
+          <li>AI・共有フォルダ・チャットのアカウントを、御社名義でご用意いただく</li>
+          <li>顧客名簿などの個人データを扱う業務は、データの送り先・置き場所・見られる人を最初に一緒に確かめ、取り決めを結んでから。確かめられない業務はお受けしません</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="mark">お受けしないこと</span>
+        <ul class="plain">
+          <li>大規模な受託開発</li>
+          <li>新しいシステムの導入そのもの</li>
+          <li>売上や削減時間など、成果の保証</li>
+          <li>AIを入れること自体が目的のご支援</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- つくる会社 -->
+<section class="alt">
+  <div class="wrap">
+    <p class="label">About</p>
+    <h2><span class="nw">担当するのは、</span><span class="nw">Whitestoneです</span></h2>
+    <p>Whitestoneは、経理の集計、日々の段取り、社内の情報共有を、自分たちでAIに任せながら会社を回しています。自社の業務で先に試し、続いているやり方だけをお持ちします。</p>
+    <p class="sub" style="margin:0">和歌山県紀の川市の会社です。担当者の名前や写真は載せていませんが、相談の場でご紹介します。<br>会社のご案内は<a class="tx" href="https://whitestone-inc.co.jp/">こちらのサイト</a>でご覧いただけます。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <p class="label">FAQ</p>
+    <h2>よくあるご質問</h2>
+    <details><summary>社内にパソコンに詳しい人がいません。</summary><p class="sub" style="margin-top:12px">大丈夫です。窓口の担当の方はITに詳しくなくて構いません。一緒に作りながら、直し方を少しずつお伝えします。</p></details>
+    <details><summary>システム会社やITコンサルとは何が違いますか。</summary><p class="sub" style="margin-top:12px">新しいシステムを入れるのではなく、いまお使いの表計算・メール・チャットの中で動く形にします。助言や報告書で終わらず、動く道具を毎月お渡しします。</p></details>
+    <details><summary>顧客名簿など、個人データを扱う業務も頼めますか。</summary><p class="sub" style="margin-top:12px">条件つきでお受けします。AIサービスへ送る内容・置き場所・見られる人を最初に一緒に確かめ、秘密保持と個人情報の取扱いの取り決めを結んでから作ります。道具は御社のアカウントの中に作り、名簿などをWhitestoneの手元に持ち出すことはしません。確かめられない業務はお受けしません。</p></details>
+    <details><summary>3か月より短く・長くもできますか。</summary><p class="sub" style="margin-top:12px">月ごとのお申し込みなので、初月だけでも、3か月を超えても構いません。ただし、社内で回せる状態にして離れることを目指して進めます。</p></details>
+    <details><summary>終わったあと、作ったものは使えますか。</summary><p class="sub" style="margin-top:12px">はい。すべて御社のアカウントの中にあり、御社のものです。こちらの権限は、最後に御社の画面で一緒に確認しながら外します。</p></details>
+    <details><summary>どれくらい効果が出ますか。</summary><p class="sub" style="margin-top:12px">業務や使い方によって異なるため、成果の保証はいたしません。初月のはじめに決めた道具が月末までに仕上がらなかった場合は、初月の費用をお返しします。</p></details>
+    <details><summary>なぜ2社までなのですか。</summary><p class="sub" style="margin-top:12px">中に入って一緒に作る進め方のため、1社に月2日分の作業を確実にあてられる数に絞っています。枠が空き次第ご案内します。</p></details>
+  </div>
+</section>
+
+<!-- 申し込み -->
+<section class="alt" id="apply">
+  <div class="wrap">
+    <p class="label">Contact</p>
+    <h2>30分の相談を申し込む</h2>
+    <p>まず30分、オンラインでお話を伺います。楽にしたい業務の様子をお聞きして、この進め方が合うか、まず1つの業務から始めるほうがよいかを、その場でお伝えします。相談は無料です。</p>
+    <a class="btn" href="mailto:info@whitestone-inc.co.jp?subject=%E7%A4%BE%E5%A4%96AI%E6%8B%85%E5%BD%93%E3%81%AE%E7%9B%B8%E8%AB%87">メールで申し込む</a>
+    <p style="margin-top:20px">会社名・従業員数・楽にしたい業務（いくつでも）・ご都合のよい日時を添えてお送りください。<br><span class="sub">宛先：<a class="tx" href="mailto:info@whitestone-inc.co.jp">info@whitestone-inc.co.jp</a></span></p>
+    <p class="sub">お問い合わせには2営業日以内にご返信します。<br>お預かりした情報は、ご相談の確認とご連絡にのみ使います（<a class="tx" href="https://whitestone-inc.co.jp/privacy.html">個人情報保護方針</a>）。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <table>
+      <tr><th>会社名</th><td>Whitestone株式会社</td></tr>
+      <tr><th>所在地</th><td>〒640-0416 和歌山県紀の川市貴志川町長山１２２－３</td></tr>
+      <tr><th>お問い合わせ</th><td><a class="tx" href="mailto:info@whitestone-inc.co.jp">info@whitestone-inc.co.jp</a>（2営業日以内にご返信します）</td></tr>
+    </table>
+    <div class="foot-links">
+      <a class="tx" href="https://whitestone-inc.co.jp/">会社サイト</a>
+      <a class="tx" href="https://whitestone-inc.co.jp/ai.html">AI活用支援</a>
+      <a class="tx" href="https://whitestone-inc.co.jp/privacy.html">個人情報保護方針</a>
+    </div>
+    <p style="margin-top:20px">© Whitestone Inc.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" role="complementary" aria-label="相談の申し込み"><div class="wrap"><span class="sc-txt">社外AI担当 月198,000円（税込）／ 初月に仕上がらなければ返金</span><a class="btn" href="#apply">相談を申し込む</a></div></div>
+
+<script>
+(function(){var d=document.documentElement;if(!('IntersectionObserver' in window))return;d.classList.add('js');
+var els=document.querySelectorAll('section:not(:first-of-type) .wrap>*,.card');
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+els.forEach(function(el){el.classList.add('rv');io.observe(el)});})();
+</script>
+</body>
+</html>
