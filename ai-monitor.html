@@ -57,8 +57,8 @@ p{margin:0 0 16px}
 .sub{font-size:13px;color:var(--text-sub)}
 a.tx{color:inherit;text-underline-offset:3px}
 .price-box{border:1px solid var(--line);padding:32px 24px;background:var(--surface)}
-.price{font-family:var(--serif);font-size:clamp(40px,10vw,60px);line-height:1.2;display:block;margin-bottom:8px}
-.price small{font-size:.35em;margin-left:4px}
+.price{font-family:var(--serif);font-size:clamp(46px,12vw,72px);line-height:1.2;display:block;margin-bottom:8px}
+.price small{font-size:.4em;margin-left:4px}
 .promise{border:1px solid var(--line);background:var(--surface);padding:20px 24px;margin-top:28px}
 .promise p{margin:0}
 ul.plain{list-style:none;margin:0;padding:0}
@@ -107,12 +107,14 @@ section:first-of-type .wrap>*:nth-child(n+5){animation-delay:.48s}
 .js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 /* 追従する応募ボタン */
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:10px 20px calc(10px + env(safe-area-inset-bottom))}
-.sticky-cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0}
-.sticky-cta .sc-txt{font-size:13px;line-height:1.5;color:var(--text-sub)}
-.sticky-cta .btn{margin:0;padding:12px 28px;white-space:nowrap}
-body{padding-bottom:76px}
-@media(max-width:560px){.sticky-cta .sc-txt{display:none}.sticky-cta .btn{width:100%;text-align:center}}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.97);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.06);padding:14px 20px calc(14px + env(safe-area-inset-bottom))}
+.sticky-cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0}
+.sticky-cta .sc-txt{font-size:16px;line-height:1.4;color:var(--text)}
+.sticky-cta .sc-price{font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:.01em;margin:0 2px}
+.sticky-cta .sc-txt small{display:block;font-size:13px;color:var(--text-sub)}
+.sticky-cta .btn{margin:0;padding:18px 44px;font-size:18px;font-weight:700;white-space:nowrap}
+body{padding-bottom:104px}
+@media(max-width:560px){.sticky-cta{padding:10px 16px calc(12px + env(safe-area-inset-bottom))}.sticky-cta .wrap{flex-direction:column;align-items:stretch;gap:8px}.sticky-cta .sc-txt{text-align:center;font-size:14px}.sticky-cta .sc-price{font-size:26px}.sticky-cta .sc-txt small{display:none}.sticky-cta .btn{width:100%;text-align:center;padding:14px 20px}body{padding-bottom:140px}}
 /* 見本画面の窓枠 */
 .sample-bar{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;background:#f4f4f2;font-size:12px;color:var(--text-sub);margin-top:20px}
 .sample-bar i{width:9px;height:9px;border-radius:50%;background:#d6d6d2;display:inline-block}
@@ -354,7 +356,7 @@ body{padding-bottom:76px}
   </div>
 </footer>
 
-<div class="sticky-cta" role="complementary" aria-label="モニター応募"><div class="wrap"><span class="sc-txt">モニター価格 25,000円（税込）／ 5社限定</span><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdzjGr4_FCs1bgqkOUnlQkgSivhiPeaxygkkVVXOO64fqX3HQ/viewform" target="_blank" rel="noopener">応募する</a></div></div>
+<div class="sticky-cta" role="complementary" aria-label="モニター応募"><div class="wrap"><span class="sc-txt">モニター価格 <b class="sc-price">25,000円</b>（税込）<small>5社限定</small></span><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdzjGr4_FCs1bgqkOUnlQkgSivhiPeaxygkkVVXOO64fqX3HQ/viewform" target="_blank" rel="noopener">応募する</a></div></div>
 
 <script>
 (function(){var d=document.documentElement;if(!('IntersectionObserver' in window))return;d.classList.add('js');
