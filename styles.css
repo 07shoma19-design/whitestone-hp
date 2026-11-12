@@ -1027,7 +1027,7 @@ a.submit-btn { text-decoration: none; }
   margin: 0;
 }
 .footer-wordmark svg { display: block; width: 100%; height: 100%; }
-.footer-wordmark .lockup-box { fill: var(--color-surface-base); }
+.footer-wordmark .lockup-box { fill: var(--color-surface-base); stroke: var(--color-text-primary); } /* 正規ロゴ＝白箱＋細い黒枠（2026-11-12 壮真「枠取りされたロゴを」） */
 .footer-wordmark .lockup-text { fill: var(--color-text-primary); }
 .footer-copy { font-size: var(--font-size-xs); color: var(--color-text-tertiary); letter-spacing: 0.08em; max-width: 60em; }
 .footer-note { display: block; margin-top: var(--space-3); } /* 脚注は行を分けて折り返しの混線を防ぐ */
