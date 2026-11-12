@@ -166,6 +166,15 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
 .wordmark:hover .lockup-box { stroke: var(--color-accent); }
 .wordmark:hover .lockup-text { fill: var(--color-accent); }
 
+/* ヘッダーロゴの回転（2026-11-12）：位置・大きさは上の.wordmarkのまま。動かし方は wordmark.js の冒頭を参照
+   表裏は同じ面＝-90°〜+90°の半回転をくり返す＝鏡像の角度を通らない */
+.wordmark { perspective: 500px; }
+.logo-spin .wordmark svg { animation: wordmark-spin 3s linear -1.5s infinite; }
+.logo-scroll .wordmark svg { transform: rotateY(var(--logo-rot, 0deg)); }
+.logo-scroll .wordmark.is-settling svg { transition: transform 0.8s var(--ease); }
+@keyframes wordmark-spin { from { transform: rotateY(-90deg); } to { transform: rotateY(90deg); } }
+@media (prefers-reduced-motion: reduce) { .wordmark svg { animation: none !important; transform: none !important; } }
+
 .site-nav { display: flex; align-items: center; gap: var(--space-7); }
 .site-nav a:not(.nav-cta) {
   font-size: var(--font-size-sm);
