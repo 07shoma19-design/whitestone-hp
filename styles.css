@@ -667,6 +667,35 @@ a[href^="mailto:"] { overflow-wrap: anywhere; } /* メールアドレスの桁�
   line-height: 1.9;
   margin-top: var(--space-3);
 }
+/* 制作見本（web.html #samples。料金のplan-gridを流用・架空店舗の見本3つ。2026-11-12 T-338） */
+.sample-thumb {
+  display: block; overflow: hidden;
+  border: 1px solid var(--color-border-hairline);
+}
+.sample-thumb img {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover;
+  transition: transform var(--motion-normal) var(--ease);
+}
+@media (hover: hover) { .sample-thumb:hover img { transform: scale(1.02); } }
+.sample-body {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--color-border-strong);
+  padding-top: var(--space-6);
+}
+.sample-name {
+  margin-top: var(--space-4);
+  font-family: var(--font-serif-jp);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: 1.7;
+}
+.sample-text {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+}
+.sample .more-link { margin-top: var(--space-6); }
 .subsidy-body { max-width: 44em; } /* =704px。中身14pxで50字（コンテナのemは16px基準）2026-08-21実測 */
 .subsidy-body p {
   margin-top: var(--space-6);
