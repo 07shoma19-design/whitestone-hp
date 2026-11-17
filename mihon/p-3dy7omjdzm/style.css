@@ -1,0 +1,144 @@
+:root{
+  --orange:#E8761A; --orange-text:#B4570C; --btn:#D2660F; --pale:#FFF4EA;
+  --ink:#3B3430; --sub:#6B625C; --line:#EADFD6; --bg:#FFFFFF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-size:18px;line-height:1.9;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--orange-text)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+/* 上の帯 */
+.top{border-bottom:4px solid var(--orange);background:#fff;position:sticky;top:0;z-index:10}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.logo-slot{width:56px;height:56px;border:2px dashed var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1.3;text-align:center;color:var(--orange-text);background:var(--pale);flex-shrink:0}
+.brand-name{font-weight:700;font-size:20px;line-height:1.3}
+.brand-name small{display:block;font-size:13px;font-weight:500;color:var(--sub)}
+.tel-btn{display:inline-flex;align-items:center;gap:6px;background:var(--btn);color:#fff;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:18px;white-space:nowrap}
+
+/* はじめの画面 */
+.hero{padding:40px 0 32px}
+.hero h1{font-size:30px;line-height:1.5;margin:0 0 12px}
+.hero h1 span{color:var(--orange-text)}
+.hero p.lead{margin:0 0 24px;font-size:19px}
+.photo{border:2px dashed #D9CBBE;background:#FAF6F2;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--sub);font-size:15px;padding:16px}
+.photo.big{aspect-ratio:16/9}
+.photo.mid{aspect-ratio:4/3}
+
+/* 見出しの型（全ページ共通） */
+section{padding:44px 0;border-top:1px solid var(--line)}
+section.pale{background:var(--pale);border-top:none}
+h2{font-size:25px;line-height:1.5;margin:0 0 20px;padding-top:14px;position:relative}
+h2::before{content:"";position:absolute;top:0;left:0;width:44px;height:5px;border-radius:3px;background:var(--orange)}
+h3{font-size:20px;margin:0 0 6px}
+p{margin:0 0 14px}
+
+/* 要確認の印（父に見せる叩き台だけ・公開時に消す） */
+.kk{display:inline-block;background:#FFF1B8;color:#7A5B00;border:1px solid #E9CF6A;border-radius:4px;font-size:13px;line-height:1.5;padding:0 6px;margin-left:4px;vertical-align:2px;white-space:nowrap}
+.kk-note{background:#FFFBEA;border:1px solid #E9CF6A;border-radius:8px;padding:12px 16px;font-size:15px;line-height:1.7;margin:0 0 20px}
+
+/* 2つ並び（スマホは縦） */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.box{border:1px solid var(--line);border-radius:8px;padding:20px;background:#fff}
+.box .tag{display:inline-block;font-size:14px;font-weight:700;color:#fff;background:var(--orange);border-radius:4px;padding:0 8px;margin-bottom:6px}
+
+/* 一日の流れ */
+.flow{list-style:none;margin:0;padding:0}
+.flow li{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.flow li:last-child{border-bottom:none}
+.flow .t{font-weight:700;color:var(--orange-text)}
+
+/* ご利用までの流れ */
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:0 0 22px 58px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:19px}
+.steps li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:#F3C9A3}
+.steps li:last-child::after{display:none}
+.steps b{display:block;font-size:19px}
+
+/* 表 */
+table{width:100%;border-collapse:collapse;font-size:17px;background:#fff}
+th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:var(--pale);font-weight:700;width:42%}
+.small{font-size:15px;color:var(--sub);line-height:1.7}
+
+/* よくある質問 */
+.qa dt{font-weight:700;margin-top:18px;padding-left:34px;position:relative}
+.qa dt::before{content:"Q";position:absolute;left:0;color:var(--orange-text);font-size:20px}
+.qa dd{margin:4px 0 0;padding-left:34px;position:relative}
+.qa dd::before{content:"A";position:absolute;left:0;color:var(--sub);font-size:20px}
+
+/* アクセス */
+.map{width:100%;aspect-ratio:4/3;border:1px solid var(--line);border-radius:8px}
+
+/* お問い合わせ */
+.contact{text-align:center}
+.contact .big-tel{display:inline-block;background:var(--btn);color:#fff;text-decoration:none;font-weight:700;font-size:26px;padding:16px 28px;border-radius:8px;margin:8px 0}
+
+footer{background:#4A3F38;color:#F4ECE6;padding:28px 0 96px;font-size:15px;line-height:1.8}
+footer a{color:#FFD3AE}
+
+/* スマホ下の電話ボタン */
+.callbar{display:none}
+@media (max-width:640px){
+  body{font-size:17px}
+  .hero{padding:28px 0 24px}
+  .hero h1{font-size:24px}
+  h2{font-size:22px}
+  .two{grid-template-columns:1fr}
+  .brand-name{font-size:17px}
+  .logo-slot{width:46px;height:46px;font-size:10px}
+  .top .tel-btn{display:none}
+  .callbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;border-top:1px solid var(--line);padding:10px 14px}
+  .callbar a{flex:1;text-align:center;background:var(--btn);color:#fff;font-weight:700;text-decoration:none;padding:12px;border-radius:8px;font-size:19px}
+  th{width:auto}
+}
+@media print{
+  .top{position:static}
+  .callbar{display:none!important}
+  section{break-inside:avoid}
+  footer{padding-bottom:28px}
+}
+/* スマホでは表を縦積みにする（見出し列が細くなって縦書き状に崩れるのを防ぐ） */
+@media (max-width:640px){
+  table,tbody,tr,th,td{display:block;width:100%}
+  tr{border:1px solid var(--line);border-radius:8px;margin-bottom:8px;overflow:hidden}
+  th,td{border:none}
+  th{padding:8px 12px 2px}
+  td{padding:2px 12px 10px}
+}
+.nw{display:inline-block}
+
+/* ===== 2版で足した部品（オレンジの量は初版並み・2026-11-17 壮真「オレンジやりすぎ・前ぐらいに戻す」） ===== */
+body{word-break:keep-all;overflow-wrap:anywhere;line-break:strict}
+h1,h2,h3,.eyebrow,.lead{text-wrap:balance}
+.kk-note{margin:16px 0 0}
+.hero .eyebrow{font-weight:700;font-size:16px;line-height:1.6;margin:0 0 8px;color:var(--orange-text)}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.feat .f{border:1px solid var(--line);border-radius:8px;padding:18px 18px 6px;background:#fff}
+.feat .n{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:6px}
+.feat p{font-size:17px}
+.note-box{margin-top:16px;background:var(--pale);border-left:4px solid var(--orange);border-radius:6px;padding:12px 16px;font-size:17px}
+.note-box b{display:block;color:var(--orange-text)}
+.contact h2::before{left:50%;transform:translateX(-50%)}
+@media (max-width:640px){
+  .feat{grid-template-columns:1fr}
+  .hero .eyebrow{font-size:15px}
+}
+
+/* ===== 固定メニュー（オレンジ帯・2026-11-17 壮真「固定のバーはオレンジ」） ===== */
+.top{border-bottom:none}
+.gnav{background:var(--orange)}
+.gnav ul{list-style:none;margin:0 auto;padding-top:0;padding-bottom:0;display:flex;justify-content:space-between;gap:4px}
+.gnav a{display:block;color:#fff;text-decoration:none;font-weight:700;font-size:15px;line-height:1.4;padding:11px 8px;white-space:nowrap;border-bottom:3px solid transparent}
+.gnav a:hover,.gnav a:focus-visible{border-bottom-color:#fff}
+section{scroll-margin-top:124px}
+@media (max-width:640px){
+  .gnav ul{justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-left:8px;padding-right:8px;gap:0}
+  .gnav ul::-webkit-scrollbar{display:none}
+  .gnav a{font-size:14px;padding:10px 10px}
+  section{scroll-margin-top:108px}
+}
+.gnav wbr{display:none}
